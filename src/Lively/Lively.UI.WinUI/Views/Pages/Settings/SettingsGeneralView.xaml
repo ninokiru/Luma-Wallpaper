@@ -112,7 +112,6 @@
                     </controls:SettingsCard>
                 </StackPanel>
 
-                <!--  Icon="&#xF12B;"  -->
                 <!--  Wallpaper Directory  -->
                 <StackPanel>
                     <TextBlock

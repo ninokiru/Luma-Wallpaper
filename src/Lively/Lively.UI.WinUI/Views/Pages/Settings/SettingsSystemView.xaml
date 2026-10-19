@@ -21,7 +21,7 @@
                 <!--  Appearance and Behaviour  -->
                 <StackPanel Visibility="{Binding IsTaskbarThemeSupported, Converter={StaticResource VisibilityConverter}, Mode=OneTime}">
                     <TextBlock
-                        x:Uid="AppearanceBehaviour"
+                        x:Uid="TaskbarGroup"
                         Margin="0,0,0,10"
                         FontWeight="SemiBold" />
                     <controls:SettingsCard x:Uid="TaskbarTheme">
@@ -38,19 +38,13 @@
                             <ComboBoxItem x:Uid="TaskbarThemeWallpaperFluent" />
                         </ComboBox>
                     </controls:SettingsCard>
+                    <!--  Hidden with the group above on the builds that ignore taskbar theming.  -->
                     <InfoBar
                         x:Uid="DevelopmentOnHold"
                         VerticalAlignment="Top"
                         IsClosable="False"
                         IsOpen="True"
-                        Severity="Error">
-                        <InfoBar.ActionButton>
-                            <HyperlinkButton NavigateUri="https://github.com/rocksdanister/lively/issues/1569" ToolTipService.ToolTip="https://github.com/rocksdanister/lively/issues/1569">
-                                <HyperlinkButton.Content>
-                                    <TextBlock x:Uid="TextLearnMore" TextWrapping="Wrap" />
-                                </HyperlinkButton.Content>
-                            </HyperlinkButton>
-                        </InfoBar.ActionButton>
+                        Severity="Warning">
                         <animations:Implicit.ShowAnimations>
                             <animations:TranslationAnimation
                                 From="0,-15,0"

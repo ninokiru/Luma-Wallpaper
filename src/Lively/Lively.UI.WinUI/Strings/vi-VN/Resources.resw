@@ -428,13 +428,13 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Mở Luma</value>
   </data>
   <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
-    <value>Tất cả tiến trình</value>
+    <value>Mọi ứng dụng</value>
   </data>
   <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
-    <value>Direct3D</value>
+    <value>Toàn màn hình (Direct3D)</value>
   </data>
   <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
-    <value>Tiến trình ưu tiên </value>
+    <value>Ứng dụng đang dùng</value>
   </data>
   <data name="TextPauseWallpapers" xml:space="preserve">
     <value>Tạm dừng hình nền</value>
@@ -443,7 +443,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Dừng hẳn</value>
   </data>
   <data name="TextPerformanceNone.Content" xml:space="preserve">
-    <value>Không có gì</value>
+    <value>Vẫn phát</value>
   </data>
   <data name="TextPerformancePause.Content" xml:space="preserve">
     <value>Tạm dừng</value>
@@ -644,7 +644,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Đồng bộ hình nền động ở màn hình chính qua màn hình khóa</value>
   </data>
   <data name="PauseAlgorithm.Description" xml:space="preserve">
-    <value>Thuật toán ngừng phát wallpaper</value>
+    <value>Cách Luma nhận biết khi nào cần tạm dừng</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
     <value>Thay đổi cách hoạt động khi windows đang ở trạng thái tiết kiệm pin</value>
@@ -653,7 +653,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Chuyển chế độ chạy video khi đang điều khiển máy tính từ xa</value>
   </data>
   <data name="ScreensaverWaitTime.Header" xml:space="preserve">
-    <value>Sau một lúc không sử dụng máy thì sử dụng hình nền hiện tại để làm màn hình chờ</value>
+    <value>Chờ trước khi bật (phút)</value>
   </data>
   <data name="StreamWallpaperDetect.Description" xml:space="preserve">
     <value>Nếu phát hiện thấy Stream video được hỗ trợ, sử dụng trình phát video thay vì tải trang web.</value>
@@ -662,7 +662,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Chọn chất lượng video mong muốn khi đang stream</value>
   </data>
   <data name="TaskbarTheme.Description" xml:space="preserve">
-    <value>Chỉnh lại taskbar của hệ thống</value>
+    <value>Đổi giao diện thanh taskbar của Windows</value>
   </data>
   <data name="TipTileSize" xml:space="preserve">
     <value>Kích thước của các ô hình nền trong Thư viện.</value>
@@ -704,16 +704,16 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Thêm hình nền</value>
   </data>
   <data name="AppFocus.Header" xml:space="preserve">
-    <value>Các ứng dụng được tập trung</value>
+    <value>Khi ứng dụng đang được dùng</value>
   </data>
   <data name="AppFullScreen.Header" xml:space="preserve">
-    <value>Các ứng dụng toàn màn hình</value>
+    <value>Khi ứng dụng toàn màn hình</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
     <value>Luma Wallpaper</value>
   </data>
   <data name="AppRules.Header" xml:space="preserve">
-    <value>Quy tắc của các ứng dụng</value>
+    <value>Quy tắc theo ứng dụng</value>
   </data>
   <data name="AppTheme.Header" xml:space="preserve">
     <value>Chủ đề</value>
@@ -743,10 +743,10 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Xác nhận xóa</value>
   </data>
   <data name="DesktopPicture.Header" xml:space="preserve">
-    <value>Ảnh Desktop</value>
+    <value>Ảnh trên màn hình nền</value>
   </data>
   <data name="DisplayPauseRule.Header" xml:space="preserve">
-    <value>Quy tắc tạm dừng hình nền desktop</value>
+    <value>Quy tắc tạm dừng theo màn hình</value>
   </data>
   <data name="Documentation.Header" xml:space="preserve">
     <value>Tài liệu</value>
@@ -755,10 +755,10 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Nhập URL</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
-    <value>Tệp nhật ký</value>
+    <value>Xuất tệp nhật ký</value>
   </data>
   <data name="TitleGeneral" xml:space="preserve">
-    <value>Tổng quát</value>
+    <value>Chung</value>
   </data>
   <data name="GifPlayer.Header" xml:space="preserve">
     <value>Trình chiếu Gif</value>
@@ -800,7 +800,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Vui lòng đợi</value>
   </data>
   <data name="PowerSavingModePower.Header" xml:space="preserve">
-    <value>Khi đang ở trong chế độ tiết kiệm pin</value>
+    <value>Khi bật chế độ tiết kiệm pin</value>
   </data>
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
     <value>Khi đang điều khiển máy tính từ xa</value>
@@ -846,7 +846,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Hệ thống</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
-    <value>Phông màu của Taskbar</value>
+    <value>Giao diện thanh taskbar</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
     <value>Kích thước ô</value>
@@ -885,7 +885,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Phương pháp sắp xếp</value>
   </data>
   <data name="WallpaperPlaybackGroup.Text" xml:space="preserve">
-    <value>Phát lại hình nền</value>
+    <value>Phát hình nền</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
     <value>Cảnh báo</value>
@@ -924,13 +924,13 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Cài đặt màu cho Windows</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Text" xml:space="preserve">
-    <value>Máy tính xách tay  </value>
+    <value>Pin &amp; kết nối từ xa</value>
   </data>
   <data name="DeveloperGroup.Text" xml:space="preserve">
     <value>Nhà phát triển</value>
   </data>
   <data name="AppearanceBehaviour.Text" xml:space="preserve">
-    <value>Vẻ ngoài &amp; biểu hiện</value>
+    <value>Giao diện &amp; hành vi</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
     <value>Hình nền đang sử dụng</value>
@@ -969,10 +969,10 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Lưu</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>Giao diện của người dùng và animations</value>
+    <value>Animation trong ứng dụng. Tắt nếu máy cấu hình thấp.</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
-    <value>Giao diện người dùng</value>
+    <value>Hiệu ứng giao diện</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
     <value>Lite</value>
@@ -1164,10 +1164,10 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Chỉ có như vậy thôi..</value>
   </data>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
-    <value>Quá trình phát triển tính năng này đang bị tạm dừng</value>
+    <value>Tính năng này đang tạm dừng phát triển.</value>
   </data>
   <data name="WallpaperPluginGroup.Text" xml:space="preserve">
-    <value>Tính năng hỗ trợ</value>
+    <value>Trình phát Web</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
     <value>Tạo hình nền động</value>
@@ -1254,13 +1254,13 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Khi trở lại, hiển thị màn hình đăng nhập</value>
   </data>
   <data name="ScreensaverFadeIn.Header" xml:space="preserve">
-    <value>Chuyển mờ sang màu đen trước khi bắt đầu hình nền</value>
+    <value>Làm mờ dần sang đen trước khi bật</value>
   </data>
   <data name="VideoLetWindowsManageColor.Header" xml:space="preserve">
     <value>Để Windows quản lý màu sắc</value>
   </data>
   <data name="ScreensaverWindowsSettings.Header" xml:space="preserve">
-    <value>Thiết lập cửa sổ</value>
+    <value>Cài đặt Windows</value>
   </data>
   <data name="DescriptionConfirmProjectDirectory.Text" xml:space="preserve">
     <value>Xác nhận cấu trúc dự án</value>
@@ -1303,10 +1303,10 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Tốc độ khung hình</value>
   </data>
   <data name="DisplayFrameRate.Header" xml:space="preserve">
-    <value>Giới hạn FPS cho tủng màn hình</value>
+    <value>Giới hạn FPS cho từng màn hình</value>
   </data>
   <data name="DisplayFrameRate.Description" xml:space="preserve">
-    <value>Hạn chế số lần vẵ lại của hình nền động trên màn hình đó. Đặt giá trị thấp sẽ tốn ít CPU và GPU hơn.</value>
+    <value>Hạn chế số lần vẽ lại của hình nền động trên màn hình đó.</value>
   </data>
   <data name="DisplayFrameRateUnlimited.Content" xml:space="preserve">
     <value>Không giới hạn</value>
@@ -1324,10 +1324,10 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Đổi sau mỗi (phút)</value>
   </data>
   <data name="PlaylistShuffle.Header" xml:space="preserve">
-    <value>Phát ngẪu hưng</value>
+    <value>Phát ngẫu nhiên</value>
   </data>
   <data name="PlaylistShuffle.Description" xml:space="preserve">
-    <value>Chọn hình nền ngẪu hưng thay vì theo thứ tự.</value>
+    <value>Chọn hình nền ngẫu nhiên thay vì theo thứ tự.</value>
   </data>
   <data name="PlaylistDays.Header" xml:space="preserve">
     <value>Ngày</value>
@@ -1400,5 +1400,23 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
   </data>
   <data name="UpdateLogCard.Description" xml:space="preserve">
     <value>Luma sẽ tự đóng và khởi động lại sau khi cài xong.</value>
+  </data>
+  <data name="PauseAlgorithmTypeGrid.Content" xml:space="preserve">
+    <value>Theo lưới</value>
+  </data>
+  <data name="TaskbarGroup.Text" xml:space="preserve">
+    <value>Thanh taskbar</value>
+  </data>
+  <data name="ScreensaverOptionsGroup.Text" xml:space="preserve">
+    <value>Màn hình chờ</value>
+  </data>
+  <data name="ScreensaverWaitTime.Description" xml:space="preserve">
+    <value>Số phút không thao tác máy thì dùng hình nền hiện tại làm màn hình chờ.</value>
+  </data>
+  <data name="ScreensaverWindowsHint.Title" xml:space="preserve">
+    <value>Cài đặt của Windows</value>
+  </data>
+  <data name="ScreensaverWindowsHint.Message" xml:space="preserve">
+    <value>Windows chỉ chạy tệp .scr: mở bảng ở trên rồi chọn Luma trong danh sách màn hình chờ.</value>
   </data>
 </root>

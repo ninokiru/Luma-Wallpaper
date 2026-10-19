@@ -508,11 +508,13 @@ namespace Lively.UI.Shared.ViewModels
                     IsAlert = appUpdater.Status == AppUpdateStatus.available,
                     Alert = 1
                 },
-                new() { Name = GetPageName(ContentPageType.settingsGeneral), PageType = ContentPageType.settingsGeneral },
-                new() { Name = GetPageName(ContentPageType.settingsPerformance), PageType = ContentPageType.settingsPerformance },
-                new() { Name = GetPageName(ContentPageType.settingsWallpaper), PageType = ContentPageType.settingsWallpaper },
-                new() { Name = GetPageName(ContentPageType.settingsScreensaver), PageType = ContentPageType.settingsScreensaver },
-                new() { Name = GetPageName(ContentPageType.settingsSystem), PageType = ContentPageType.settingsSystem }
+                // Wallpaper comes before Performance because it holds the day to day
+                // choices; the last two pages are only touched when something is wrong.
+                new() { Name = GetPageName(ContentPageType.settingsGeneral), Glyph = "\uE713", PageType = ContentPageType.settingsGeneral },
+                new() { Name = GetPageName(ContentPageType.settingsWallpaper), Glyph = "\uE8B9", PageType = ContentPageType.settingsWallpaper },
+                new() { Name = GetPageName(ContentPageType.settingsPerformance), Glyph = "\uE916", PageType = ContentPageType.settingsPerformance },
+                new() { Name = GetPageName(ContentPageType.settingsScreensaver), Glyph = "\uE793", PageType = ContentPageType.settingsScreensaver },
+                new() { Name = GetPageName(ContentPageType.settingsSystem), Glyph = "\uE770", PageType = ContentPageType.settingsSystem }
             ];
         }
 

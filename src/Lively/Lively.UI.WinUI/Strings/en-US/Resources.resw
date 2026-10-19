@@ -428,13 +428,13 @@ If still not working, close &amp; start Luma again/restart windows.
     <value>Open Luma</value>
   </data>
   <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
-    <value>All process</value>
+    <value>All apps</value>
   </data>
   <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
-    <value>Direct3D</value>
+    <value>Fullscreen (Direct3D)</value>
   </data>
   <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
-    <value>Foreground process</value>
+    <value>Foreground app</value>
   </data>
   <data name="TextPauseWallpapers" xml:space="preserve">
     <value>Pause Wallpapers</value>
@@ -443,7 +443,7 @@ If still not working, close &amp; start Luma again/restart windows.
     <value>Kill</value>
   </data>
   <data name="TextPerformanceNone.Content" xml:space="preserve">
-    <value>Nothing</value>
+    <value>Keep playing</value>
   </data>
   <data name="TextPerformancePause.Content" xml:space="preserve">
     <value>Pause</value>
@@ -644,7 +644,7 @@ If still not working, close &amp; start Luma again/restart windows.
     <value>Set a picture of animated wallpaper as lockscreen wallpaper</value>
   </data>
   <data name="PauseAlgorithm.Description" xml:space="preserve">
-    <value>Wallpaper pause algorithm</value>
+    <value>How Luma detects that something covers the desktop</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
     <value>Change playback when Windows Power Saving Mode is enabled</value>
@@ -653,7 +653,7 @@ If still not working, close &amp; start Luma again/restart windows.
     <value>Change playback when running a Remote Desktop session</value>
   </data>
   <data name="ScreensaverWaitTime.Header" xml:space="preserve">
-    <value>After the inactivity period use the current wallpaper as your screensaver</value>
+    <value>Screensaver delay</value>
   </data>
   <data name="StreamWallpaperDetect.Description" xml:space="preserve">
     <value>If supported video stream link is detected use the video player instead of loading the webpage</value>
@@ -704,16 +704,16 @@ If still not working, close &amp; start Luma again/restart windows.
     <value>Add Wallpaper</value>
   </data>
   <data name="AppFocus.Header" xml:space="preserve">
-    <value>Applications focused</value>
+    <value>When an app has focus</value>
   </data>
   <data name="AppFullScreen.Header" xml:space="preserve">
-    <value>Applications fullscreen</value>
+    <value>When an app is fullscreen</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
     <value>Luma Wallpaper</value>
   </data>
   <data name="AppRules.Header" xml:space="preserve">
-    <value>Application Rules</value>
+    <value>Application rules</value>
   </data>
   <data name="AppTheme.Header" xml:space="preserve">
     <value>Theme</value>
@@ -746,7 +746,7 @@ If still not working, close &amp; start Luma again/restart windows.
     <value>Desktop picture</value>
   </data>
   <data name="DisplayPauseRule.Header" xml:space="preserve">
-    <value>Display pause rule</value>
+    <value>Pause rule per display</value>
   </data>
   <data name="Documentation.Header" xml:space="preserve">
     <value>Documentation</value>
@@ -924,7 +924,7 @@ If still not working, close &amp; start Luma again/restart windows.
     <value>Windows color settings</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Text" xml:space="preserve">
-    <value>Laptops</value>
+    <value>Power and remote desktop</value>
   </data>
   <data name="DeveloperGroup.Text" xml:space="preserve">
     <value>Developer</value>
@@ -969,10 +969,10 @@ If still not working, close &amp; start Luma again/restart windows.
     <value>Save</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>User interface effects and animations</value>
+    <value>Animations across the app. Turn off on a low-end system.</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
-    <value>User interface</value>
+    <value>Interface effects</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
     <value>Lite</value>
@@ -1164,10 +1164,10 @@ If still not working, close &amp; start Luma again/restart windows.
     <value>That's all for now..</value>
   </data>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
-    <value>This feature development is on hold</value>
+    <value>This feature is on hold.</value>
   </data>
   <data name="WallpaperPluginGroup.Text" xml:space="preserve">
-    <value>Plugins</value>
+    <value>Web player</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
     <value>Create a dynamic wallpaper</value>
@@ -1399,5 +1399,23 @@ If still not working, close &amp; start Luma again/restart windows.
   </data>
   <data name="UpdateLogCard.Description" xml:space="preserve">
     <value>Luma closes and restarts itself once the update is installed.</value>
+  </data>
+  <data name="PauseAlgorithmTypeGrid.Content" xml:space="preserve">
+    <value>Grid</value>
+  </data>
+  <data name="TaskbarGroup.Text" xml:space="preserve">
+    <value>Taskbar</value>
+  </data>
+  <data name="ScreensaverOptionsGroup.Text" xml:space="preserve">
+    <value>Screensaver</value>
+  </data>
+  <data name="ScreensaverWaitTime.Description" xml:space="preserve">
+    <value>Minutes of inactivity before the current wallpaper is used as a screensaver.</value>
+  </data>
+  <data name="ScreensaverWindowsHint.Title" xml:space="preserve">
+    <value>Windows setting</value>
+  </data>
+  <data name="ScreensaverWindowsHint.Message" xml:space="preserve">
+    <value>Windows only starts a .scr file: open the panel above and pick Luma in its screensaver list.</value>
   </data>
 </root>
