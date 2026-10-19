@@ -20,9 +20,16 @@ namespace Lively.Player.WebView2
             var fit = ToObjectFit(scaler);
             var isVideo = kind is WebPageType.video;
             var src = JsonConvert.SerializeObject(mediaUri.AbsoluteUri);
+            // A silent video is declared muted in the markup: Chromium then never builds the
+            // audio pipeline for it, which is one decoder thread less on a weak CPU.
+            // Picture in picture and remote playback are dead weight here, and their handlers
+            // are what make a wallpaper pop a media window over the desktop.
+            // Images decode off the main thread so a 4K still never stalls the first frames.
             var element = isVideo
-                ? "<video id=\"livelyMedia\" autoplay loop playsinline preload=\"auto\"></video>"
-                : "<img id=\"livelyMedia\" alt=\"\">";
+                ? "<video id=\"livelyMedia\" autoplay loop playsinline preload=\"auto\"" +
+                    (Math.Clamp(volume, 0, 100) == 0 ? " muted" : string.Empty) +
+                    " disablepictureinpicture disableremoteplayback></video>"
+                : "<img id=\"livelyMedia\" alt=\"\" decoding=\"async\">";
             var volumeInit = isVideo
                 ? $"media.volume = {(Math.Clamp(volume, 0, 100) / 100d).ToString(System.Globalization.CultureInfo.InvariantCulture)};"
                 : string.Empty;

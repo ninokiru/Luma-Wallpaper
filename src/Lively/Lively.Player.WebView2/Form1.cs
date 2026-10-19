@@ -141,13 +141,27 @@ namespace Lively.Player.WebView2
                 // Allow media autoplay even if not muted.
                 "--autoplay-policy=no-user-gesture-required " +
                 // Disable SMTC.
-                "--disable-features=HardwareMediaKeyHandling " +
+                "--disable-features=HardwareMediaKeyHandling,MediaRouter,GlobalMediaControls," +
+                // The wallpaper window is never the foreground window and starts life parked
+                // off screen, so Chromium's own throttling would freeze rAF and pause the video.
+                // The core owns suspend/resume, the renderer must not second guess it.
+                "CalculateNativeWinOcclusion " +
+                // Same reason: a wallpaper is always a background renderer, without this the
+                // page gets timer throttled and the animation crawls to a stop.
+                "--disable-background-timer-throttling --disable-renderer-backgrounding " +
+                "--disable-backgrounding-occluded-windows " +
                 // Integrated GPUs (Intel UHD 610/620/710/730, Iris Xe, AMD Radeon) sit on the
                 // Chromium blocklist, which drops the wallpaper to CPU compositing and software
                 // video decode.
                 "--ignore-gpu-blocklist --enable-accelerated-video-decode " +
+                // Paint on the GPU instead of the CPU and hand the tiles over without a copy;
+                // on an iGPU the memory is shared, so the copies were the expensive part.
+                "--enable-gpu-rasterization --enable-zero-copy " +
                 // Route H.265 through the Windows decoder so the iGPU media engine is used.
-                "--enable-features=PlatformHEVCDecoderSupport";
+                "--enable-features=PlatformHEVCDecoderSupport " +
+                // Housekeeping services that would wake the CPU and touch the disk for no
+                // benefit in a window nobody interacts with.
+                "--disable-background-networking --disable-component-update --disable-breakpad";
             CoreWebView2EnvironmentOptions options = new CoreWebView2EnvironmentOptions(webViewStartArgs);
             // WebView2 does not have in-memory mode, ref: https://github.com/MicrosoftEdge/WebView2Feedback/issues/3637
             // Custom user data folder, ref: https://docs.microsoft.com/en-us/microsoft-edge/webview2/concepts/user-data-folder
