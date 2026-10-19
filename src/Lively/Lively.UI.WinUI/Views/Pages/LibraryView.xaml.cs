@@ -74,8 +74,12 @@ namespace Lively.UI.WinUI.Views.Pages
                     break;
                 case "exportWallpaper":
                     // The wallpaper is packed as a .zip that can be given to anyone, no account needed.
+                    // The save picker throws on a suggested name that cannot be a file name, and a
+                    // title is whatever the wallpaper author wrote, so it is cleaned up first.
+                    var invalidChars = Path.GetInvalidFileNameChars();
+                    var zipName = new string(obj.Title?.Select(c => invalidChars.Contains(c) ? '_' : c).ToArray() ?? "wallpaper") + ".zip";
                     var saveFile = await fileService.PickSaveFileAsync(
-                        Path.ChangeExtension(obj.Title, ".zip"),
+                        zipName,
                         new[] { ("Luma Wallpaper package", new[] { ".zip" }) });
                     if (!string.IsNullOrEmpty(saveFile))
                         await libraryVm.WallpaperExport(obj, saveFile);

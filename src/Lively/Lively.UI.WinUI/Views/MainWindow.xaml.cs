@@ -56,7 +56,8 @@ namespace Lively.UI.WinUI
             navigator.Frame = contentFrame;
             // BaseAlt is the denser Mica variant. Plain Mica tints towards the desktop image,
             // so a bright wallpaper washes the window out and the text loses its contrast.
-            this.SystemBackdrop = new Microsoft.UI.Composition.SystemBackdrops.MicaBackdrop
+            // MicaBackdrop projects into Xaml.Media while MicaKind stayed in SystemBackdrops.
+            this.SystemBackdrop = new MicaBackdrop
             {
                 Kind = Microsoft.UI.Composition.SystemBackdrops.MicaKind.BaseAlt
             };
