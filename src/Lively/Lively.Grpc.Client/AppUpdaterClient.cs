@@ -62,13 +62,6 @@ namespace Lively.Grpc.Client
             await client.StartUpdateAsync(new Empty());
         }
 
-        public async Task SwitchReleaseChannel(bool isBeta, CancellationToken ct)
-        {
-            await client.SwitchReleaseChannelAsync(new SwitchReleaseChannelRequest() { 
-                Channel = isBeta ? ReleaseChannel.Beta : ReleaseChannel.Stable 
-            }, cancellationToken: ct);
-        }
-
         private async Task UpdateStatusRefresh()
         {
             var resp = await client.GetUpdateStatusAsync(new Empty());

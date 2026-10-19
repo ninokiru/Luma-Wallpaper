@@ -97,33 +97,6 @@
                             <FontIcon Glyph="&#xE9F9;" />
                         </controls:SettingsCard.HeaderIcon>
                     </controls:SettingsCard>
-
-                    <Grid CornerRadius="5" Visibility="{Binding IsWinStore, Converter={StaticResource VisibilityConverter}, Mode=OneWay, ConverterParameter=Reverse}">
-                        <!--  Swtich to Stable channel  -->
-                        <Grid Background="#2525ff00" Visibility="{Binding IsBetaBuild, Converter={StaticResource VisibilityConverter}, Mode=OneWay}">
-                            <controls:SettingsCard
-                                x:Uid="SwitchReleaseBranchStable"
-                                Background="Transparent"
-                                Command="{Binding SwitchReleaseChannelCommand}"
-                                IsClickEnabled="True">
-                                <controls:SettingsCard.HeaderIcon>
-                                    <FontIcon Glyph="&#xE90f;" />
-                                </controls:SettingsCard.HeaderIcon>
-                            </controls:SettingsCard>
-                        </Grid>
-                        <!--  Switch to Beta channel  -->
-                        <Grid Background="#25ffff00" Visibility="{Binding IsBetaBuild, Converter={StaticResource VisibilityConverter}, Mode=OneWay, ConverterParameter=Reverse}">
-                            <controls:SettingsCard
-                                x:Uid="SwitchReleaseBranchBeta"
-                                Background="Transparent"
-                                Command="{Binding SwitchReleaseChannelCommand}"
-                                IsClickEnabled="True">
-                                <controls:SettingsCard.HeaderIcon>
-                                    <FontIcon Glyph="&#xE90f;" />
-                                </controls:SettingsCard.HeaderIcon>
-                            </controls:SettingsCard>
-                        </Grid>
-                    </Grid>
                 </StackPanel>
 
             </StackPanel>

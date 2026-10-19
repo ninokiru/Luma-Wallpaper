@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
 using System.Threading;
@@ -73,21 +72,29 @@ namespace Lively.Common.Services
 
             using var client = httpClientFactory.CreateClient();
             using HttpResponseMessage response = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+            // Without this a rate-limited or missing asset answers 404 with an html body,
+            // which used to be written to disk as the installer and then launched.
+            response.EnsureSuccessStatusCode();
+
+            long length = response.Content.Headers.ContentLength ?? -1;
 
             if (progressCallback != null)
             {
-                long length = response.Content.Headers.ContentLength ?? -1;
                 using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
                 byte[] buffer = new byte[4096];
                 int read;
-                int totalRead = 0;
+                long totalRead = 0;
                 while ((read = await stream.ReadAsync(buffer, 0, buffer.Length, cancellationToken).ConfigureAwait(false)) > 0)
                 {
                     await toStream.WriteAsync(buffer, 0, read, cancellationToken).ConfigureAwait(false);
                     totalRead += read;
                     progressCallback.Invoke(totalRead, length);
                 }
-                Debug.Assert(totalRead == length || length == -1);
+
+                // A connection that closes early reports success, and the caller would
+                // happily run the truncated setup.
+                if (length >= 0 && totalRead != length)
+                    throw new IOException($"Download of {uri} ended after {totalRead} of {length} bytes.");
             }
             else
             {

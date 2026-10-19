@@ -34,8 +34,10 @@ DisableProgramGroupPage=yes
 ; Remove the following line to run in administrative install mode (install for all users.)
 ; lowest - AppData folder, admin - Program Files (x86) 
 PrivilegesRequired=lowest
-; Ask user which PrivilegesRequired on startup.
-PrivilegesRequiredOverridesAllowed=dialog
+; Ask user which PrivilegesRequired on startup. commandline is also required: the in-app
+; updater passes /ALLUSERS when it runs from a Program Files install, and a setup that only
+; allows the dialog would refuse the switch and install a second copy under AppData.
+PrivilegesRequiredOverridesAllowed=dialog commandline
 ; Name matches the asset prefix the in-app updater looks for: luma_setup_x64_full_*
 OutputBaseFilename=luma_setup_x64_full_v{#MyAppVersion}
 SetupIconFile=Icons\appicon_96.ico

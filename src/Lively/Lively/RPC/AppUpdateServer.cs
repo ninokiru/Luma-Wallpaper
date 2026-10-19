@@ -19,12 +19,10 @@ namespace Lively.RPC
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly IAppUpdaterService updater;
-        private readonly IDownloadService downloader;
 
-        public AppUpdateServer(IAppUpdaterService updater, IDownloadService downloader)
+        public AppUpdateServer(IAppUpdaterService updater)
         {
             this.updater = updater;
-            this.downloader = downloader;
         }
 
         public override async Task<Empty> CheckUpdate(Empty _, ServerCallContext context)
@@ -72,7 +70,7 @@ namespace Lively.RPC
                         throw new FileNotFoundException(filePath);
 
                     // Run setup in silent mode.
-                    Process.Start(filePath, "/SILENT /CLOSEAPPLICATIONS /RESTARTAPPLICATIONS");
+                    Process.Start(filePath, GetSetupArguments());
                     // Inno installer will auto retry, waiting for application exit.
                     App.QuitApp();
                 }
@@ -91,34 +89,35 @@ namespace Lively.RPC
             return Task.FromResult(new Empty());
         }
 
-        public override async Task<Empty> SwitchReleaseChannel(SwitchReleaseChannelRequest request, ServerCallContext context)
+        /// <summary>
+        /// The setup defaults to a per-user install, which cannot replace a per-machine
+        /// one: it finds no previous registration, lays a second copy under AppData and
+        /// leaves the running build at the old version. The scope therefore comes from the
+        /// folder this process was started from, which is the install being updated.
+        /// </summary>
+        private static string GetSetupArguments()
         {
-            try
+            const string silent = "/SILENT /CLOSEAPPLICATIONS /RESTARTAPPLICATIONS";
+            var installDir = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory)
+                .TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+
+            foreach (var root in new[]
             {
-                if (PackageUtil.IsRunningAsPackaged)
-                    throw new InvalidOperationException("msix not supported.");
-
-                var isRequestedBetaChannel = request.Channel == ReleaseChannel.Beta;
-                var isCurrentBetaChannel = Constants.ApplicationType.IsTestBuild;
-
-                if (isCurrentBetaChannel && isRequestedBetaChannel || !(isCurrentBetaChannel || isRequestedBetaChannel))
-                    return await Task.FromResult(new Empty());
-
-                var (SetupUri, SetupFileName, _) = await updater.GetLatestRelease(isRequestedBetaChannel);
-                var filePath = Path.Combine(Constants.CommonPaths.TempDir, SetupFileName);
-
-                await downloader.DownloadFile(SetupUri, filePath, null, context.CancellationToken);
-                // Run setup in silent mode.
-                Process.Start(filePath, "/SILENT /CLOSEAPPLICATIONS /RESTARTAPPLICATIONS");
-                // Inno installer will auto retry, waiting for application exit.
-                App.QuitApp();
-            }
-            catch (Exception ex)
+                Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles),
+                Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
+            })
             {
-                Logger.Error(ex);
-                throw new RpcException(new Status(StatusCode.Internal, ex.Message));
+                if (string.IsNullOrEmpty(root))
+                    continue;
+
+                var prefix = Path.GetFullPath(root)
+                    .TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+                if (installDir.Equals(prefix, StringComparison.OrdinalIgnoreCase) ||
+                    installDir.StartsWith(prefix + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase))
+                    return silent + " /ALLUSERS";
             }
-            return await Task.FromResult(new Empty());
+
+            return silent;
         }
 
         public override Task<UpdateResponse> GetUpdateStatus(Empty _, ServerCallContext context)
