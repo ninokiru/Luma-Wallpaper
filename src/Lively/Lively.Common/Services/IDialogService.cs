@@ -1,5 +1,4 @@
 ﻿using Lively.Models;
-using Lively.Models.Gallery.API;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -26,18 +25,14 @@ namespace Lively.Common.Services
         Task<string> ShowTextInputDialogAsync(string title, string placeholderText);
         Task ShowThemeDialogAsync();
         Task ShowWaitDialogAsync(object content, int seconds);
-        Task ShowShareWallpaperDialogAsync(LibraryModel obj);
         Task ShowAboutWallpaperDialogAsync(LibraryModel obj);
         Task<bool> ShowDeleteWallpaperDialogAsync(LibraryModel obj);
-        Task ShowReportWallpaperDialogAsync(LibraryModel obj);
         Task ShowCustomiseWallpaperDialogAsync(LibraryModel obj);
         Task<LibraryModel> ShowDepthWallpaperDialogAsync(string imagePath);
         Task<(WallpaperAddType wallpaperType, List<string> wallpapers)> ShowAddWallpaperDialogAsync();
         Task<WallpaperCreateType?> ShowWallpaperCreateDialogAsync(string filePath);
         Task<WallpaperCreateType?> ShowWallpaperCreateDialogAsync();
         Task<bool> ShowWallpaperProjectDirectoryDialogAsync(string folderPath);
-        Task<IEnumerable<GalleryModel>> ShowGalleryRestoreWallpaperDialogAsync(IEnumerable<WallpaperDto> wallpapers);
-        Task ShowGalleryEditProfileDialogAsync();
         Task<bool> ShowCancellableProgressDialogAsync(string message, CancellationToken ct);
     }
 

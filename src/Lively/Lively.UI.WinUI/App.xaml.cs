@@ -3,7 +3,6 @@ using Lively.Common.Factories;
 using Lively.Common.Helpers;
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Common.Services;
-using Lively.Gallery.Client;
 using Lively.Grpc.Client;
 using Lively.ML.DepthEstimate;
 using Lively.Models.Enums;
@@ -145,15 +144,8 @@ namespace Lively.UI.WinUI
                 .AddSingleton<IMainNavigator, MainNavigator>()
                 .AddSingleton<MainWindow>()
                 .AddSingleton<MainViewModel>()
-                .AddSingleton<GalleryClient>((e) => new GalleryClient(e.GetRequiredService<IHttpClientFactory>(), "http://api.livelywallpaper.net/api/",
-                    "https://accounts.google.com/o/oauth2/auth/oauthchooseaccount?client_id=923081992071-qg27j4uhasb3r4lasb9cb19nbhvgbb34.apps.googleusercontent.com&redirect_uri=http://127.0.0.1:43821/signin-oidc&scope=email%20openid%20profile&response_type=code&state=asdafwswdwefwsdg&flowName=GeneralOAuthFlow",
-                    "https://github.com/login/oauth/authorize?client_id=bbfd46fbb54895ecee74&redirect_uri=http://127.0.0.1:43821/signin-oidc-github&scope=user:email",
-                    new JsonTokenStore()))
                 .AddSingleton<LibraryViewModel>() //Storing and tracking library items.
-                .AddSingleton<GalleryViewModel>()
-                .AddSingleton<GallerySubscriptionViewModel>()
                 .AddSingleton<AppUpdateViewModel>()
-                .AddSingleton<ICacheService, DiskCacheService>((e) => new DiskCacheService(e.GetRequiredService<IHttpClientFactory>(), Path.Combine(Path.GetTempPath(), ApplicationType.Name, "gallery")))
                 .AddSingleton<IDepthEstimate, MiDaS>()
                 // Scoped
                 .AddScoped<IDialogNavigator, DialogNavigator>()
@@ -167,9 +159,6 @@ namespace Lively.UI.WinUI
                 .AddTransient<ChooseDisplayViewModel>()
                 .AddTransient<FindMoreAppsViewModel>()
                 .AddTransient<AppThemeViewModel>()
-                .AddTransient<GalleryLoginViewModel>()
-                .AddTransient<ManageAccountViewModel>()
-                .AddTransient<RestoreWallpaperViewModel>()
                 .AddTransient<AddWallpaperCreateViewModel>()
                 .AddTransient<DepthEstimateWallpaperViewModel>()
                 .AddTransient<SettingsGeneralViewModel>()
@@ -177,7 +166,6 @@ namespace Lively.UI.WinUI
                 .AddTransient<SettingsWallpaperViewModel>()
                 .AddTransient<SettingsScreensaverViewModel>()
                 .AddTransient<SettingsSystemViewModel>()
-                .AddTransient<ShareWallpaperViewModel>()
                 .AddTransient<AddWallpaperDataViewModel>()
                 .AddTransient<IFileService, FileService>()
                 .AddTransient<IApplicationsFactory, ApplicationsFactory>()

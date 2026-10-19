@@ -68,8 +68,8 @@
 
                 <StackPanel Margin="0,5,5,0">
                     <HyperlinkButton x:Uid="AttributionLink" NavigateUri="https://livelywallpaper.net/attribution/" />
-                    <HyperlinkButton x:Uid="LicenseLink" NavigateUri="https://github.com/rocksdanister/lively/blob/core-separation/LICENSE" />
-                    <HyperlinkButton x:Uid="PrivacyPolicyLink" NavigateUri="https://github.com/rocksdanister/lively/blob/core-separation/PRIVACY.md" />
+                    <HyperlinkButton x:Uid="LicenseLink" NavigateUri="https://github.com/ninokiru/Luma-Wallpaper/blob/main/LICENSE" />
+                    <HyperlinkButton x:Uid="PrivacyPolicyLink" NavigateUri="https://github.com/ninokiru/Luma-Wallpaper/blob/main/PRIVACY.md" />
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>

@@ -4,5 +4,8 @@
     <!-- WinUI has no AnyCPU platform, so command line builds default to x64 instead of passing
          Platform down to the referenced projects, which only build AnyCPU. -->
     <Platform Condition="'$(Platform)' == '' or '$(Platform)' == 'AnyCPU'">x64</Platform>
+    <!--  Repeated from src/Lively/Directory.Build.props: this file stops MSBuild from walking
+          further up, so the UI needs its own copy. Only English and Vietnamese are shipped. -->
+    <SatelliteResourceLanguages>en;en-US;vi;vi-VN</SatelliteResourceLanguages>
  </PropertyGroup>
 </Project>

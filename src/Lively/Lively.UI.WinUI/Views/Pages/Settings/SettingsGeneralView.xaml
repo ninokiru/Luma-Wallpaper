@@ -71,40 +71,6 @@
                                 SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}" />
                         </StackPanel>
                     </controls:SettingsCard>
-                    <InfoBar
-                        x:Uid="TextHelpTranslate"
-                        VerticalAlignment="Top"
-                        IsClosable="False"
-                        IsOpen="True"
-                        Severity="Informational">
-                        <InfoBar.ActionButton>
-                            <HyperlinkButton NavigateUri="https://rocksdanister.github.io/lively/translation" ToolTipService.ToolTip="https://rocksdanister.github.io/lively/translation">
-                                <HyperlinkButton.Content>
-                                    <TextBlock x:Uid="TextLearnMore" TextWrapping="Wrap" />
-                                </HyperlinkButton.Content>
-                            </HyperlinkButton>
-                        </InfoBar.ActionButton>
-                        <animations:Implicit.ShowAnimations>
-                            <animations:TranslationAnimation
-                                From="0,-15,0"
-                                To="0"
-                                Duration="0:0:0.4" />
-                            <animations:OpacityAnimation
-                                From="0"
-                                To="1.0"
-                                Duration="0:0:0.6" />
-                        </animations:Implicit.ShowAnimations>
-                        <animations:Implicit.HideAnimations>
-                            <animations:OpacityAnimation
-                                From="1.0"
-                                To="0"
-                                Duration="0:0:0.2" />
-                            <animations:TranslationAnimation
-                                From="0"
-                                To="0,-15,0"
-                                Duration="0:0:0.2" />
-                        </animations:Implicit.HideAnimations>
-                    </InfoBar>
                 </StackPanel>
 
                 <!--  Audio  -->

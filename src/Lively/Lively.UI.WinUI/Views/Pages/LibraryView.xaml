@@ -25,8 +25,8 @@
     <Page.Resources>
         <AcrylicBrush
             x:Key="DragAcrylicBrush"
-            FallbackColor="{ThemeResource SystemAltMediumColor}"
-            TintColor="{ThemeResource SystemAltMediumColor}"
+            FallbackColor="{ThemeResource LayerFillColorDefaultBrush}"
+            TintColor="{ThemeResource LayerFillColorDefaultBrush}"
             TintOpacity="1.0" />
         <customconverters:BooleanToVisibilityConverter x:Key="VisibilityConverter" />
         <customconverters:ListViewSelectionModeStringToEnumConverter x:Key="ListViewSelectionModeStringToEnumConverter" />
@@ -95,19 +95,10 @@
                     </MenuFlyoutItem>
                     <MenuFlyoutItem
                         x:Name="exportWallpaper"
-                        x:Uid="TextShare"
+                        x:Uid="ExportWallpaperZip"
                         Click="contextMenu_Click">
                         <MenuFlyoutItem.Icon>
-                            <FontIcon Glyph="&#xE72D;" />
-                        </MenuFlyoutItem.Icon>
-                    </MenuFlyoutItem>
-                    <MenuFlyoutItem
-                        x:Name="reportWallpaper"
-                        x:Uid="TextReportWallpaper"
-                        Click="contextMenu_Click"
-                        Visibility="Collapsed">
-                        <MenuFlyoutItem.Icon>
-                            <FontIcon Glyph="&#xE730;" />
+                            <FontIcon Glyph="&#xE74E;" />
                         </MenuFlyoutItem.Icon>
                     </MenuFlyoutItem>
                     <MenuFlyoutItem
@@ -224,7 +215,7 @@
                                 Text="{Binding Title}" />
                             <TextBlock
                                 Margin="0,0,30,0"
-                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 MaxLines="2"
                                 Style="{ThemeResource CaptionTextBlockStyle}"
                                 Text="{Binding Desc}" />
@@ -318,14 +309,14 @@
             </animations:Implicit.HideAnimations>
             <Rectangle
                 Margin="25"
-                Stroke="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                Stroke="{ThemeResource TextFillColorSecondaryBrush}"
                 StrokeDashArray="3"
                 StrokeDashCap="Flat"
                 StrokeDashOffset="1.5"
                 StrokeThickness="2" />
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <SymbolIcon
-                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                     RenderTransformOrigin="0.5,0.5"
                     Symbol="Add">
                     <SymbolIcon.RenderTransform>
@@ -336,14 +327,14 @@
                     x:Uid="AddWallpaperDrop"
                     Margin="0,12,0,0"
                     FontSize="24"
-                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" />
+                    Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
             </StackPanel>
         </Grid>
 
         <!--  Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/6702  -->
         <RelativePanel
             x:Name="BusyPanel"
-            Background="{ThemeResource SystemAltMediumColor}"
+            Background="{ThemeResource LayerFillColorDefaultBrush}"
             Visibility="{Binding IsBusy, Mode=OneWay, Converter={StaticResource VisibilityConverter}}">
             <ProgressRing
                 Width="100"

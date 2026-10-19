@@ -62,10 +62,13 @@ namespace Lively.RPC
 
         public override Task<GetCoreStatsResponse> GetCoreStats(Empty _, ServerCallContext context)
         {
+            var version = Assembly.GetExecutingAssembly().GetName().Version;
             return Task.FromResult(new GetCoreStatsResponse()
             {
                 BaseDirectory = AppDomain.CurrentDomain.BaseDirectory,
-                AssemblyVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString(),
+                // Release tags carry three parts, an assembly always four, and this string is
+                // what the update page prints, so the trailing revision is dropped here.
+                AssemblyVersion = $"{version.Major}.{version.Minor}.{version.Build}",
                 IsCoreInitialized = desktopCore.DesktopWorkerW != IntPtr.Zero,
             });
         }

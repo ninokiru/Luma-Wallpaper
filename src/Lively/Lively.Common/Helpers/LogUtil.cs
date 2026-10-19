@@ -43,7 +43,8 @@ namespace Lively.Common.Helpers
         {
             var arch = Environment.Is64BitProcess ? "x64" : "x86";
             var container = PackageUtil.IsRunningAsPackaged ? "desktop-bridge" : "desktop-native";
-            return $"\nLively v{Assembly.GetEntryAssembly().GetName().Version} {arch} {container} {CultureInfo.CurrentUICulture.Name}" +
+            var version = Assembly.GetEntryAssembly().GetName().Version;
+            return $"\n{Constants.ApplicationType.Name} v{version.Major}.{version.Minor}.{version.Build} {arch} {container} {CultureInfo.CurrentUICulture.Name}" +
                 $"\n{SystemInfo.GetOSInfo()}\n{SystemInfo.GetCpuInfo()}\n{SystemInfo.GetGpuInfo()}\n";
         }
 

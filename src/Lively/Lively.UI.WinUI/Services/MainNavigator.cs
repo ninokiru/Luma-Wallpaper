@@ -1,7 +1,6 @@
 ﻿using Lively.Common.Services;
 using Lively.Models.Enums;
 using Lively.UI.WinUI.Views.Pages;
-using Lively.UI.WinUI.Views.Pages.Gallery;
 using Lively.UI.WinUI.Views.Pages.Settings;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
@@ -44,7 +43,6 @@ namespace Lively.UI.WinUI.Services
             Type pageType = contentPage switch
             {
                 ContentPageType.library => typeof(LibraryView),
-                ContentPageType.gallery => typeof(GalleryView),
                 ContentPageType.appupdate => typeof(AppUpdateView),
                 ContentPageType.settingsGeneral => typeof(SettingsGeneralView),
                 ContentPageType.settingsPerformance => typeof(SettingsPerformanceView),

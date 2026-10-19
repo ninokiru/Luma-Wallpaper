@@ -25,12 +25,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ControlPanel\WallpaperLayoutViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CustomiseWallpaperViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\DepthEstimateWallpaperViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Gallery\GalleryLoginViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Gallery\GallerySubscriptionViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Gallery\GalleryViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Gallery\ManageAccountViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Gallery\ReportWallpaperViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Gallery\RestoreWallpaperViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LibraryAboutViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LibraryViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainViewModel.cs" />
@@ -41,6 +35,5 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Settings\SettingsScreensaverViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Settings\SettingsSystemViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Settings\SettingsWallpaperViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ShareWallpaperViewModel.cs" />
   </ItemGroup>
 </Project>

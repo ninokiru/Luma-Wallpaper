@@ -138,7 +138,7 @@ namespace Lively.Models
 
         public SettingsModel()
         {
-            SavedURL = "https://github.com/ninokiru/Lively-Wallpaper";
+            SavedURL = "https://github.com/ninokiru/Luma-Wallpaper";
             ProcessMonitorAlgorithm = ProcessMonitorAlgorithm.grid;
             WallpaperArrangement = WallpaperArrangement.per;
             ScreensaverArragement = WallpaperArrangement.per;

@@ -4,12 +4,11 @@
   <h2 align="center">Luma Wallpaper</h2>
 </p>
 
-[![GitHub release](https://img.shields.io/github/release/rocksdanister/lively/all.svg)](https://github.com/rocksdanister/lively/releases)
-[![Github all releases](https://img.shields.io/github/downloads/rocksdanister/lively/total.svg)](https://github.com/rocksdanister/lively/releases)
-[![GitHub stars](https://img.shields.io/github/stars/rocksdanister/lively.svg)](https://github.com/rocksdanister/lively/stargazers)
-[![Documentation](https://img.shields.io/badge/Docs-WIP-red.svg)](https://github.com/rocksdanister/lively/wiki)
-[![Issues](https://img.shields.io/github/issues/rocksdanister/lively.svg)](https://github.com/rocksdanister/lively/issues)
-[![Crowdin](https://badges.crowdin.net/lively-wallpaper/localized.svg)](https://crowdin.com/project/lively-wallpaper)
+[![GitHub release](https://img.shields.io/github/release/ninokiru/Luma-Wallpaper/all.svg)](https://github.com/ninokiru/Luma-Wallpaper/releases)
+[![Github all releases](https://img.shields.io/github/downloads/ninokiru/Luma-Wallpaper/total.svg)](https://github.com/ninokiru/Luma-Wallpaper/releases)
+[![GitHub stars](https://img.shields.io/github/stars/ninokiru/Luma-Wallpaper.svg)](https://github.com/ninokiru/Luma-Wallpaper/stargazers)
+[![Documentation](https://img.shields.io/badge/Docs-WIP-red.svg)](https://github.com/ninokiru/Luma-Wallpaper/wiki)
+[![Issues](https://img.shields.io/github/issues/ninokiru/Luma-Wallpaper.svg)](https://github.com/ninokiru/Luma-Wallpaper/issues)
 
 ## Contents
 - [About](#about)
@@ -25,7 +24,7 @@ Luma Wallpaper — animated desktop wallpapers, bring your desktop to life!
 
 #### Join Discussions:
 * <a href="https://www.reddit.com/r/LivelyWallpaper/">Reddit</a>
-* <a href="https://github.com/rocksdanister/lively/discussions/">Github</a>
+* <a href="https://github.com/ninokiru/Luma-Wallpaper/discussions/">Github</a>
 
 ## Features
 *Wait a sec, preview gif clips take some time to load.*
@@ -41,24 +40,24 @@ Luma Wallpaper — animated desktop wallpapers, bring your desktop to life!
 * Luma Wallpaper supports Windows screensaver.
 * Any wallpaper can be used as screensaver.
 * Multiple monitor supported.
-* [Learn more..](https://github.com/rocksdanister/lively/wiki/Screen-Saver)
+* [Learn more..](https://github.com/ninokiru/Luma-Wallpaper/wiki/Screen-Saver)
 #### Automation
 <img src="/resources/rotary_demo.gif" width="600" height="338"/>
 
 * Luma Wallpaper can be controlled with command line arguments from terminal.
 * Integrate with other languages like Python or scripting software AutoHotKey.
-* [Learn more..](https://github.com/rocksdanister/lively/wiki/Command-Line-Controls)
+* [Learn more..](https://github.com/ninokiru/Luma-Wallpaper/wiki/Command-Line-Controls)
 #### Lively API
 <img src="/resources/music_api.gif" width="600" height="338"/>
 
 * Powerful set of API for developers to create interactive wallpapers.
 * Get hardware readings, audio graph, music information..
-* [Learn more..](https://github.com/rocksdanister/lively/wiki/API)
+* [Learn more..](https://github.com/ninokiru/Luma-Wallpaper/wiki/API)
 #### Machine Learning
 <img src="/resources/wallpaper_depth.gif" width="600" height="338"/>
 
 * Leverage Machine Learning inference to create dynamic wallpapers.
-* [Learn more..](https://github.com/rocksdanister/lively/wiki/Machine-Learning)
+* [Learn more..](https://github.com/ninokiru/Luma-Wallpaper/wiki/Machine-Learning)
 #### More Features
 - Minimal webpage renderer powered by chromium.
 - Hardware accelerated video playback using mpv/vlc player with customizable video filters.
@@ -79,27 +78,29 @@ Luma Wallpaper — animated desktop wallpapers, bring your desktop to life!
 
 [<img src="https://get.microsoft.com/images/en-us%20dark.svg" alt="Get it from Microsoft" width="142px" height="52px">](https://apps.microsoft.com/store/detail/9NTM2QC6QWS7)
 
-##### [Installer (Windows 10 1903 or above)](https://github.com/rocksdanister/lively/releases/latest)
+##### [Installer (Windows 10 1903 or above)](https://github.com/ninokiru/Luma-Wallpaper/releases/latest)
 
-[Which version do I download?](https://github.com/rocksdanister/lively/wiki/Differences-Between-Distributions)
+[Which version do I download?](https://github.com/ninokiru/Luma-Wallpaper/wiki/Differences-Between-Distributions)
 
 ## Support
 Are you a Luma Wallpaper fan and want to help out? here are some options..
 
 #### Programmer
-Code contributions are welcome, [learn more..](https://github.com/rocksdanister/lively/wiki/Contributing-Guidelines)
+Code contributions are welcome, [learn more..](https://github.com/ninokiru/Luma-Wallpaper/wiki/Contributing-Guidelines)
 
 #### Designer
-Help improve UI/UX of Luma Wallpaper, [learn more..](https://github.com/rocksdanister/lively/wiki/Contributing-Guidelines)
+Help improve UI/UX of Luma Wallpaper, [learn more..](https://github.com/ninokiru/Luma-Wallpaper/wiki/Contributing-Guidelines)
 
 #### Localization
-Help translate Luma Wallpaper to more languages, [learn more..](https://github.com/rocksdanister/lively-translations)
+The interface ships in English and Vietnamese only, both maintained in this repository under
+`src/Lively/Lively.UI.WinUI/Strings`.
 
 #### Suggestions & Bug report
-Suggest new features or file bug reports to improve Luma Wallpaper, [learn more..](https://github.com/rocksdanister/lively/issues)
+Suggest new features or file bug reports to improve Luma Wallpaper, [learn more..](https://github.com/ninokiru/Luma-Wallpaper/issues)
 
 #### Spread the word
-Star this repository, leave a Microsoft store review or tell your friend.. any help is welcome :)
+Star this repository or tell your friend about it.
 
 ## License
-Lively is licensed under [GPL-v3.](https://github.com/rocksdanister/lively/blob/core-separation/LICENSE)
+Luma Wallpaper is licensed under [GPL-v3.](https://github.com/ninokiru/Luma-Wallpaper/blob/main/LICENSE)
+It is a fork of [Lively Wallpaper](https://github.com/rocksdanister/lively) by Dani John.

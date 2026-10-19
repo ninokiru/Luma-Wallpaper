@@ -33,7 +33,7 @@
             <TextBlock />
             <Rectangle
                 Margin="1"
-                Stroke="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                Stroke="{ThemeResource TextFillColorSecondaryBrush}"
                 StrokeDashArray="3"
                 StrokeDashCap="Flat"
                 StrokeDashOffset="1.5"
@@ -45,12 +45,12 @@
                 Visibility="Visible">
                 <FontIcon
                     FontSize="45"
-                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                     Glyph="&#xE8C8;" />
                 <TextBlock
                     x:Uid="DragDropFile"
                     Margin="0,15,0,0"
-                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" />
+                    Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
             </StackPanel>
 
             <StackPanel
@@ -65,7 +65,7 @@
                 <TextBlock
                     x:Uid="AddWallpaperDrop"
                     Margin="0,15,0,0"
-                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" />
+                    Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
             </StackPanel>
             <InfoBar
                 x:Uid="RunningAsAdminWarning"

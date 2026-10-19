@@ -1,1 +1,1 @@
-https://github.com/rocksdanister/lively/wiki/Contributing-Guidelines
+https://github.com/ninokiru/Luma-Wallpaper/wiki/Contributing-Guidelines

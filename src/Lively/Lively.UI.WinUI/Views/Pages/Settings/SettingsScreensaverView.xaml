@@ -97,7 +97,7 @@
                         Severity="Warning"
                         Visibility="{Binding IsScreensaverPluginNotify, Mode=OneWay, Converter={StaticResource VisibilityConverter}}">
                         <InfoBar.ActionButton>
-                            <HyperlinkButton NavigateUri="https://github.com/rocksdanister/lively/wiki/Screen-Saver" ToolTipService.ToolTip="https://github.com/rocksdanister/lively/wiki/Screen-Saver">
+                            <HyperlinkButton NavigateUri="https://github.com/ninokiru/Luma-Wallpaper/wiki/Screen-Saver" ToolTipService.ToolTip="https://github.com/ninokiru/Luma-Wallpaper/wiki/Screen-Saver">
                                 <HyperlinkButton.Content>
                                     <TextBlock x:Uid="ScreensaverPluginMessage" TextWrapping="Wrap" />
                                 </HyperlinkButton.Content>

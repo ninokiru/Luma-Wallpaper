@@ -54,7 +54,12 @@ namespace Lively.UI.WinUI
             Root.DataContext = mainVm;
             navigator.RootFrame = Root;
             navigator.Frame = contentFrame;
-            this.SystemBackdrop = new MicaBackdrop();
+            // BaseAlt is the denser Mica variant. Plain Mica tints towards the desktop image,
+            // so a bright wallpaper washes the window out and the text loses its contrast.
+            this.SystemBackdrop = new Microsoft.UI.Composition.SystemBackdrops.MicaBackdrop
+            {
+                Kind = Microsoft.UI.Composition.SystemBackdrops.MicaKind.BaseAlt
+            };
 
             // Ref: https://learn.microsoft.com/en-us/windows/apps/develop/title-bar?tabs=wasdk
             if (AppWindowTitleBar.IsCustomizationSupported())

@@ -9,7 +9,6 @@ using Lively.Common.Helpers.Archive;
 using Lively.Common.Helpers.Files;
 using Lively.Common.Helpers.Storage;
 using Lively.Common.Services;
-using Lively.Gallery.Client;
 using Lively.Grpc.Client;
 using Lively.Models;
 using Lively.Models.Enums;
@@ -43,7 +42,6 @@ namespace Lively.UI.Shared.ViewModels
         private readonly IDisplayManagerClient displayManager;
         private readonly IDialogService dialogService;
         private readonly IFileService fileService;
-        private readonly GalleryClient galleryClient;
 
         private readonly IResourceService i18n;
         private TaskCompletionSource<LibraryModel> selectionTaskCompletionSource;
@@ -55,8 +53,7 @@ namespace Lively.UI.Shared.ViewModels
             IDialogService dialogService,
             IDispatcherService dispatcher,
             IResourceService i18n,
-            IFileService fileService,
-            GalleryClient galleryClient)
+            IFileService fileService)
         {
             this.wallpaperLibraryFactory = wallpaperLibraryFactory;
             this.desktopCore = desktopCore;
@@ -65,7 +62,6 @@ namespace Lively.UI.Shared.ViewModels
             this.dialogService = dialogService;
             this.dispatcher = dispatcher;
             this.fileService = fileService;
-            this.galleryClient = galleryClient;
 
             this.i18n = i18n;
 
@@ -244,64 +240,47 @@ namespace Lively.UI.Shared.ViewModels
         /// <returns></returns>
         public async Task WallpaperDelete(LibraryModel obj, bool unsubscribe = true)
         {
-            try
+            if (obj.IsDownloading && unsubscribe)
             {
-                if (obj.IsDownloading && unsubscribe)
+                CancelDownload(obj.LivelyInfo.Id);
+                return;
+            }
+
+            //close if running.
+            await desktopCore.CloseWallpaper(obj);
+            //delete wp folder.
+            var success = await FileUtil.TryDeleteDirectoryAsync(obj.LivelyInfoFolderPath, 1000, 4000);
+
+            if (success)
+            {
+                if (SelectedItem == obj)
                 {
-                    CancelDownload(obj.LivelyInfo.Id);
-                    return;
+                    SelectedItem = null;
                 }
-
-                //close if running.
-                await desktopCore.CloseWallpaper(obj);
-                //delete wp folder.      
-                var success = await FileUtil.TryDeleteDirectoryAsync(obj.LivelyInfoFolderPath, 1000, 4000);
-
-                if (success)
+                //remove from library.
+                LibraryItems.Remove(obj);
+                WallpaperDeleted?.Invoke(this, obj.LivelyInfo.Id);
+                try
                 {
-                    if (SelectedItem == obj)
+                    if (!string.IsNullOrEmpty(obj.LivelyPropertyPath))
                     {
-                        SelectedItem = null;
-                    }
-                    //remove from library.
-                    LibraryItems.Remove(obj);
-                    WallpaperDeleted?.Invoke(this, obj.LivelyInfo.Id);
-                    try
-                    {
-                        if (!string.IsNullOrEmpty(obj.LivelyPropertyPath))
+                        //Delete LivelyProperties.json backup folder.
+                        string[] wpdataDir = Directory.GetDirectories(Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperSettingsDir));
+                        var wpFolderName = new DirectoryInfo(obj.LivelyInfoFolderPath).Name;
+                        for (int i = 0; i < wpdataDir.Length; i++)
                         {
-                            //Delete LivelyProperties.json backup folder.
-                            string[] wpdataDir = Directory.GetDirectories(Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperSettingsDir));
-                            var wpFolderName = new DirectoryInfo(obj.LivelyInfoFolderPath).Name;
-                            for (int i = 0; i < wpdataDir.Length; i++)
+                            var item = new DirectoryInfo(wpdataDir[i]).Name;
+                            if (wpFolderName.Equals(item, StringComparison.Ordinal))
                             {
-                                var item = new DirectoryInfo(wpdataDir[i]).Name;
-                                if (wpFolderName.Equals(item, StringComparison.Ordinal))
-                                {
-                                    _ = FileUtil.TryDeleteDirectoryAsync(wpdataDir[i], 100, 1000);
-                                    break;
-                                }
+                                _ = FileUtil.TryDeleteDirectoryAsync(wpdataDir[i], 100, 1000);
+                                break;
                             }
                         }
                     }
-                    catch (Exception e)
-                    {
-                        Logger.Error(e.ToString());
-                    }
                 }
-            }
-            finally
-            {
-                if (unsubscribe && !string.IsNullOrEmpty(obj.LivelyInfo.Id) && galleryClient.IsLoggedIn)
+                catch (Exception e)
                 {
-                    try
-                    {
-                        await galleryClient.UnsubscribeFromWallpaperAsync(obj.LivelyInfo.Id);
-                    }
-                    catch (Exception e)
-                    {
-                        Logger.Error($"Failed to unsubscribe wallpaper: {e}");
-                    }
+                    Logger.Error(e.ToString());
                 }
             }
         }
@@ -429,124 +408,11 @@ namespace Lively.UI.Shared.ViewModels
             }
         }
 
-        ///<see cref="AddWallpaperGallery(ILibraryModel)"/>
         public void CancelAllDownloads()
         {
             foreach (var item in downloading)
             {
                 item.Item2?.Cancel();
-            }
-        }
-
-        public async Task AddWallpaperGallery(GalleryModel obj)
-        {
-            var libItem = wallpaperLibraryFactory.CreateFromMetadata(obj.LivelyInfo);
-            libItem.ImagePath = obj.Image;
-            var downloadFile = Path.Combine(Constants.CommonPaths.TempDir, Path.ChangeExtension(libItem.LivelyInfo.Id, ".zip"));
-            var cts = new CancellationTokenSource();
-            var downloadItem = (libItem.LivelyInfo.Id, cts);
-            downloading.Add(downloadItem);
-
-            try
-            {
-                await galleryClient.SubscribeToWallpaperAsync(libItem.LivelyInfo.Id);
-            }
-            catch (Exception e)
-            {
-                Logger.Error($"Failed to subscribe wallpaper: {e}");
-            }
-
-            try
-            {
-                libItem.IsDownloading = true;
-                Logger.Info($"Download Wallpaper -> Title: {libItem.Title} Id: {libItem.LivelyInfo.Id}");
-                LibraryItems.Insert(0, libItem);
-                await galleryClient.DownloadWallpaperAsync(libItem.LivelyInfo.Id, downloadFile, cts.Token, (progress, downloaded, totalSize) =>
-                {
-                    downloaded /= 1024 * 1024;
-                    totalSize /= 1024 * 1024;
-
-                    libItem.DownloadingProgress = progress;
-                    libItem.DownloadingProgressText = $"{downloaded:0.##}/{totalSize:0.##} MB";
-                    WallpaperDownloadProgress?.Invoke(this, (libItem.LivelyInfo.Id, progress, downloaded, totalSize));
-                });
-                var isSelected = SelectedItem == libItem;
-                LibraryItems.Remove(libItem);
-                var installed = await AddWallpaperFileGallery(downloadFile, libItem.LivelyInfo.Id);
-                if (isSelected)
-                {
-                    //Apply wallpaper
-                    SelectedItem = (LibraryModel)installed;
-                }
-
-                libItem.IsSubscribed = true;
-                WallpaperDownloadCompleted?.Invoke(this, libItem.LivelyInfo.Id);
-            }
-            catch (OperationCanceledException)
-            {
-                Logger.Info($"User cancelled gallery wallpaper download: {libItem.Title}");
-                WallpaperDownloadFailed?.Invoke(this, libItem.LivelyInfo.Id);
-            }
-            catch (Exception e)
-            {
-                Logger.Error($"Failed to add gallery wallpaper: {e}");
-                WallpaperDownloadFailed?.Invoke(this, libItem.LivelyInfo.Id);
-            }
-            finally
-            {
-                libItem.IsDownloading = false;
-                libItem.DownloadingProgress = 0;
-                libItem.DownloadingProgressText = "-/- MB";
-                downloading.Remove(downloadItem);
-
-                //Remove visual only item from user library
-                if (LibraryItems.Contains(libItem))
-                    LibraryItems.Remove(libItem);
-
-                //Delete temp file(s)
-                if (File.Exists(downloadFile))
-                {
-                    try
-                    {
-                        File.Delete(downloadFile);
-                    }
-                    catch { /* Core will empty temp directory next time app is started */ }
-                }
-            }
-        }
-
-        private async Task<LibraryModel> AddWallpaperFileGallery(string filePath, string id)
-        {
-            if (FileTypes.IsWallpaperPackage(filePath))
-            {
-                await semaphoreSlimInstallLock.WaitAsync();
-                string installDir = null;
-                try
-                {
-                    installDir = Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallDir, Path.GetRandomFileName());
-                    await Task.Run(() => ZipExtract.ZipExtractFile(filePath, installDir, false));
-                    var info = JsonStorage<LivelyInfoModel>.LoadData(Path.Combine(installDir, "LivelyInfo.json"));
-                    info.Id = id;
-                    JsonStorage<LivelyInfoModel>.StoreData(Path.Combine(installDir, "LivelyInfo.json"), info);
-                    return AddWallpaper(installDir);
-                }
-                catch (Exception)
-                {
-                    try
-                    {
-                        Directory.Delete(installDir, true);
-                    }
-                    catch { }
-                    throw;
-                }
-                finally
-                {
-                    semaphoreSlimInstallLock.Release();
-                }
-            }
-            else
-            {
-                throw new InvalidOperationException("Not Lively .zip");
             }
         }
 

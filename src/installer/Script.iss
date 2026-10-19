@@ -3,8 +3,8 @@
 
 #define MyAppName "Luma Wallpaper"
 #define MyAppVersion "0.0.1"
-#define MyAppPublisher "rocksdanister"
-#define MyAppURL "https://github.com/rocksdanister/lively"
+#define MyAppPublisher "ninokiru"
+#define MyAppURL "https://github.com/ninokiru/Luma-Wallpaper"
 #define MyAppExeName "Lively.exe"
 
 [CustomMessages]

@@ -15,8 +15,8 @@
     <Page.Resources>
         <AcrylicBrush
             x:Key="AcrylicBrushCustom"
-            FallbackColor="{ThemeResource SystemAltMediumColor}"
-            TintColor="{ThemeResource SystemAltMediumColor}"
+            FallbackColor="{ThemeResource LayerFillColorDefaultBrush}"
+            TintColor="{ThemeResource LayerFillColorDefaultBrush}"
             TintOpacity="0.5" />
         <ThemeShadow x:Name="BackgroundGridShadow" />
         <converters:BoolNegationConverter x:Key="BoolNegationConverter" />
@@ -28,7 +28,7 @@
         <Border
             Width="500"
             Height="350"
-            BorderBrush="{ThemeResource SystemAltHighColor}"
+            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
             BorderThickness="20"
             CornerRadius="5">
             <Grid
@@ -60,7 +60,7 @@
                 Translation="0,0,32">
                 <!--  Sometimes do not work  -->
                 <!--<ui:Effects.Shadow>
-                    <media:AttachedCardShadow Offset="4" Color="{ThemeResource SystemAltMediumColor}" />
+                    <media:AttachedCardShadow Offset="4" Color="{ThemeResource LayerFillColorDefaultBrush}" />
                 </ui:Effects.Shadow>-->
                 <Border CornerRadius="5">
                     <Image
@@ -106,7 +106,7 @@
         </InfoBar>-->
         <!--  Model download  -->
         <Border
-            Background="{ThemeResource SystemAltMediumColor}"
+            Background="{ThemeResource LayerFillColorDefaultBrush}"
             CornerRadius="5"
             Visibility="{Binding IsModelExists, Converter={StaticResource VisibilityConverter}, Mode=OneWay, ConverterParameter=Reverse}" />
         <StackPanel
@@ -123,7 +123,7 @@
             <TextBlock
                 x:Uid="DescriptionDownloadRequired"
                 Margin="0,5,0,0"
-                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                 Text="Additional files need to be downloaded for this feature"
                 TextWrapping="Wrap" />
 
@@ -139,7 +139,7 @@
         <!--  Error message  -->
         <StackPanel Margin="5" Visibility="{Binding ErrorText, Converter={StaticResource StringVisibilityConverter}, Mode=OneWay}">
             <TextBlock Foreground="Red" Text="{Binding ErrorText}" />
-            <HyperlinkButton Content="https://github.com/rocksdanister/lively/wiki/machine-learning" NavigateUri="https://github.com/rocksdanister/lively/wiki/machine-learning" />
+            <HyperlinkButton Content="https://github.com/ninokiru/Luma-Wallpaper/wiki/machine-learning" NavigateUri="https://github.com/ninokiru/Luma-Wallpaper/wiki/machine-learning" />
         </StackPanel>
 
         <!--  ref: https://github.com/huynhsontung/Screenbox/blob/main/Screenbox/Pages/PlayerPage.xaml  -->

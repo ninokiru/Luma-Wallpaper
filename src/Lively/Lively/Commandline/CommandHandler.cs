@@ -24,7 +24,7 @@ using static Lively.Common.CommandlineArgs;
 
 namespace Lively.Commandline
 {
-    //Doc: https://github.com/rocksdanister/lively/wiki/Command-Line-Controls
+    //Doc: https://github.com/ninokiru/Luma-Wallpaper/wiki/Command-Line-Controls
     //Note: No user settings should be saved here, changes are temporary only.
     public class CommandHandler : ICommandHandler
     {

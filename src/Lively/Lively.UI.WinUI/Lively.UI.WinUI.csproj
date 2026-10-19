@@ -90,13 +90,6 @@
     <None Remove="Views\Pages\ChooseDisplayView.xaml" />
     <None Remove="Views\Pages\ControlPanelView.xaml" />
     <None Remove="Views\Pages\DepthEstimateWallpaperView.xaml" />
-    <None Remove="Views\Pages\GalleryView.xaml" />
-    <None Remove="Views\Pages\Gallery\GalleryFeaturedView.xaml" />
-    <None Remove="Views\Pages\Gallery\GallerySubscriptionView.xaml" />
-    <None Remove="Views\Pages\Gallery\ManageAccountView.xaml" />
-    <None Remove="Views\Pages\Gallery\ReportWallpaperView.xaml" />
-    <None Remove="Views\Pages\Gallery\RestoreWallpaperView.xaml" />
-    <None Remove="Views\Pages\Gallery\ShareWallpaperView.xaml" />
     <None Remove="Views\Pages\HelpView.xaml" />
     <None Remove="Views\Pages\LibraryAboutView.xaml" />
     <None Remove="Views\Pages\LoginView.xaml" />
@@ -157,7 +150,6 @@
     <ProjectReference Include="..\Lively.Grpc.Client\Lively.Grpc.Client.csproj" />
     <ProjectReference Include="..\Lively.ML\Lively.ML.csproj" />
     <ProjectReference Include="..\Lively.Models\Lively.Models.csproj" />
-    <ProjectReference Include="..\Lively.Gallery.Client\Lively.Gallery.Client.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\Pages\ControlPanel\ControlPanelView.xaml">
@@ -277,33 +269,12 @@
     <Page Update="Views\LivelyProperty\EyeDropper.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Update="Views\Pages\Gallery\ShareWallpaperView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Views\Pages\Gallery\ReportWallpaperView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Views\Pages\Gallery\GallerySubscriptionView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Views\Pages\Gallery\RestoreWallpaperView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Views\Pages\Gallery\ManageAccountView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Views\Pages\Gallery\GalleryFeaturedView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Content Update="Assets\icons8-google-96.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="Assets\banner-lively-1080.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Page Update="Views\Pages\Gallery\GalleryLoginView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Update="Views\Pages\ChooseDisplayView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -320,9 +291,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="Views\Pages\TrayMenuHelp.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Views\Pages\GalleryView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="Views\Pages\AddWallpaperDataView.xaml">

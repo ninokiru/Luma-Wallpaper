@@ -2,13 +2,11 @@
 using Lively.Common.Services;
 using Lively.Models;
 using Lively.Models.Enums;
-using Lively.Models.Gallery.API;
 using Lively.UI.Shared.ViewModels;
 using Lively.UI.WinUI.Extensions;
 using Lively.UI.WinUI.Views.LivelyProperty;
 using Lively.UI.WinUI.Views.Pages;
 using Lively.UI.WinUI.Views.Pages.ControlPanel;
-using Lively.UI.WinUI.Views.Pages.Gallery;
 using Lively.UI.WinUI.Views.Pages.Settings;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
@@ -355,23 +353,6 @@ namespace Lively.UI.WinUI.Services
             }.ShowAsyncQueue();
         }
 
-        public async Task ShowShareWallpaperDialogAsync(LibraryModel obj)
-        {
-            var vm = App.Services.GetRequiredService<ShareWallpaperViewModel>();
-            vm.Model = obj;
-            await new ContentDialog()
-            {
-                Title = i18n.GetString("TitleShareWallpaper.Text"),
-                Content = new ShareWallpaperView()
-                {
-                    DataContext = vm,
-                },
-                PrimaryButtonText = i18n.GetString("TextOK"),
-                DefaultButton = ContentDialogButton.Primary,
-                XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
-            }.ShowAsyncQueue();
-        }
-
         public async Task ShowAboutWallpaperDialogAsync(LibraryModel obj)
         {
             await new ContentDialog()
@@ -399,52 +380,6 @@ namespace Lively.UI.WinUI.Services
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
             }.ShowAsyncQueue() == ContentDialogResult.Primary;
-        }
-
-        public async Task ShowReportWallpaperDialogAsync(LibraryModel obj)
-        {
-            await new ContentDialog()
-            {
-                Title = i18n.GetString("TitleReportWallpaper.Text"),
-                Content = new ReportWallpaperView()
-                {
-                    DataContext = new ReportWallpaperViewModel(obj),
-                },
-                PrimaryButtonText = i18n.GetString("Send.Content"),
-                SecondaryButtonText = i18n.GetString("Cancel.Content"),
-                DefaultButton = ContentDialogButton.Primary,
-                XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
-            }.ShowAsyncQueue();
-        }
-
-        public async Task<IEnumerable<GalleryModel>> ShowGalleryRestoreWallpaperDialogAsync(IEnumerable<WallpaperDto> wallpapers)
-        {
-            if (!wallpapers.Any())
-                return null;
-
-            var vm = App.Services.GetRequiredService<RestoreWallpaperViewModel>();
-            foreach (var item in wallpapers)
-                vm.Wallpapers.Add(new GalleryModel(item, false) { IsSelected = true });
-
-            var result = await ShowDialogAsync(
-                new RestoreWallpaperView(vm),
-                i18n.GetString("TitleWelcomeback.Text"),
-                i18n.GetString("TextDownloadNow.Content"),
-                i18n.GetString("TextMaybeLater.Content"));
-
-            return result == DialogResult.primary ? vm.SelectedItems : null;
-        }
-
-        public async Task ShowGalleryEditProfileDialogAsync()
-        {
-            await new ContentDialog()
-            {
-                Title = "Account",
-                Content = new ManageAccountView(),
-                PrimaryButtonText = i18n.GetString("TextOK"),
-                DefaultButton = ContentDialogButton.Primary,
-                XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
-            }.ShowAsyncQueue();
         }
 
         public async Task ShowWaitDialogAsync(object content, int seconds)

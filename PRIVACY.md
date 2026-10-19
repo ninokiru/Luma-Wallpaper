@@ -41,8 +41,8 @@ Last updated 2021-02-10
 
 **Contact Us**
 
-If you have questions about this application, please [fill an issue on GitHub](https://github.com/rocksdanister/lively/issues/new).
+If you have questions about this application, please [fill an issue on GitHub](https://github.com/ninokiru/Luma-Wallpaper/issues/new).
 
 **Footnotes**
 
-Instructions on retrieving local log file [can be found here.](https://github.com/rocksdanister/lively/wiki/Common-Problems)
+Instructions on retrieving local log file [can be found here.](https://github.com/ninokiru/Luma-Wallpaper/wiki/Common-Problems)

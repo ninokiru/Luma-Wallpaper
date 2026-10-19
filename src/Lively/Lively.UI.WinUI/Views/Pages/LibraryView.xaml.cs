@@ -27,6 +27,7 @@ namespace Lively.UI.WinUI.Views.Pages
         private readonly LibraryViewModel libraryVm;
         private readonly IDialogService dialogService;
         private readonly IDisplayManagerClient displayManager;
+        private readonly IFileService fileService;
 
         public LibraryView()
         {
@@ -36,6 +37,7 @@ namespace Lively.UI.WinUI.Views.Pages
             this.dialogService = App.Services.GetRequiredService<IDialogService>();
             this.displayManager = App.Services.GetRequiredService<IDisplayManagerClient>();
             this.i18n = App.Services.GetRequiredService<IResourceService>();
+            this.fileService = App.Services.GetRequiredService<IFileService>();
 
             this.InitializeComponent();
             this.DataContext = libraryVm;
@@ -71,7 +73,12 @@ namespace Lively.UI.WinUI.Views.Pages
                     await desktopCore.SetWallpaper(obj, monitor);
                     break;
                 case "exportWallpaper":
-                    await dialogService.ShowShareWallpaperDialogAsync(obj);
+                    // The wallpaper is packed as a .zip that can be given to anyone, no account needed.
+                    var saveFile = await fileService.PickSaveFileAsync(
+                        Path.ChangeExtension(obj.Title, ".zip"),
+                        new[] { ("Luma Wallpaper package", new[] { ".zip" }) });
+                    if (!string.IsNullOrEmpty(saveFile))
+                        await libraryVm.WallpaperExport(obj, saveFile);
                     break;
                 case "deleteWallpaper":
                     if (await dialogService.ShowDeleteWallpaperDialogAsync(obj))
@@ -96,9 +103,6 @@ namespace Lively.UI.WinUI.Views.Pages
                     break;
                 case "moreInformation":
                     await dialogService.ShowAboutWallpaperDialogAsync(obj);
-                    break;
-                case "reportWallpaper":
-                    await dialogService.ShowReportWallpaperDialogAsync(obj);
                     break;
             }
         }

@@ -4,7 +4,6 @@ using Lively.Common;
 using Lively.Common.Exceptions;
 using Lively.Common.Helpers.Files;
 using Lively.Common.Services;
-using Lively.Gallery.Client;
 using Lively.Grpc.Client;
 using Lively.Models;
 using Lively.Models.Enums;
@@ -32,7 +31,6 @@ namespace Lively.UI.Shared.ViewModels
         private readonly IDispatcherService dispatcher;
         private readonly IAppThemeFactory themeFactory;
         private readonly IAppUpdaterClient appUpdater;
-        private readonly GalleryClient galleryClient;
         private readonly IDialogService dialogService;
         private readonly LibraryViewModel libraryVm;
         private readonly IFileService fileService;
@@ -49,7 +47,6 @@ namespace Lively.UI.Shared.ViewModels
                              IDisplayManagerClient displayManager,
                              ICommandsClient commandsClient,
                              IAppThemeFactory themeFactory,
-                             GalleryClient galleryClient,
                              IDownloadService downloader,
                              IDialogService dialogService,
                              IAppUpdaterClient appUpdater,
@@ -62,7 +59,6 @@ namespace Lively.UI.Shared.ViewModels
             this.userSettings = userSettings;
             this.desktopCore = desktopCore;
             this.displayManager = displayManager;
-            this.galleryClient = galleryClient;
             this.dialogService = dialogService;
             this.themeFactory = themeFactory;
             this.dispatcher = dispatcher;
@@ -77,8 +73,6 @@ namespace Lively.UI.Shared.ViewModels
             desktopCore.WallpaperError += DesktopCore_WallpaperError;
             navigator.ContentPageChanged += Navigator_ContentPageChanged;
             appUpdater.UpdateChecked += AppUpdater_UpdateChecked;
-            galleryClient.LoggedOut += GalleryClient_LoggedOut;
-            galleryClient.LoggedIn += GalleryClient_LoggedIn;
             i18n.CultureChanged += I18n_CultureChanged;
 
             // For SelectedItem: OpenHomeCommand() in NavigationView.Loaded since INavigator.Frame needs to be initialized.
@@ -90,7 +84,6 @@ namespace Lively.UI.Shared.ViewModels
 
             i18n.SetCulture(userSettings.Settings.Language);
             _ = SetAppTheme(userSettings.Settings.ApplicationThemeBackground);
-            _ = GalleryInit();
 
             if (!desktopCore.IsCoreInitialized)
                 ShowError(new WorkerWException(i18n.GetString("LivelyExceptionWorkerWSetupFail")));
@@ -123,15 +116,6 @@ namespace Lively.UI.Shared.ViewModels
 
         [ObservableProperty]
         private bool isSettingsPage;
-
-        [ObservableProperty]
-        private bool isLoggedIn;
-
-        [ObservableProperty]
-        private string displayUserName;
-
-        [ObservableProperty]
-        private Uri displayAvatar;
 
         [ObservableProperty]
         private bool isUpdatedNotify;
@@ -257,7 +241,6 @@ namespace Lively.UI.Shared.ViewModels
             IsSettingsPage = e switch
             {
                 ContentPageType.library => false,
-                ContentPageType.gallery => false,
                 ContentPageType.appupdate => false,
                 ContentPageType.settingsGeneral => true,
                 ContentPageType.settingsPerformance => true,
@@ -513,68 +496,10 @@ namespace Lively.UI.Shared.ViewModels
             }
         }
 
-        private async Task GalleryInit()
-        {
-            try
-            {
-                await galleryClient.InitializeAsync();
-            }
-            catch (UnauthorizedAccessException ex1)
-            {
-                Logger.Info($"Skipping login: {ex1?.Message}");
-            }
-            catch (Exception ex2)
-            {
-                Logger.Error($"Failed to login: {ex2}");
-            }
-        }
-
-        private void GalleryClient_LoggedOut(object sender, object e)
-        {
-            dispatcher.TryEnqueue(() =>
-            {
-                IsLoggedIn = false;
-                // Close authorized flyout.
-            });
-        }
-
-        private void GalleryClient_LoggedIn(object sender, object e)
-        {
-            dispatcher.TryEnqueue(() =>
-            {
-                IsLoggedIn = true;
-                navigator.NavigateTo(ContentPageType.library);
-                DisplayUserName = galleryClient.CurrentUser.DisplayName;
-                if (LinkUtil.TrySanitizeUrl(galleryClient.CurrentUser.AvatarUrl, out Uri uri))
-                    DisplayAvatar = uri;
-            });
-        }
-
-        [RelayCommand]
-        private void GalleryAuth()
-        {
-            navigator.NavigateTo(ContentPageType.gallery);
-            // Close unauthorized flyout.
-        }
-
-        [RelayCommand]
-        private async Task GalleryLogout()
-        {
-            await galleryClient.LogoutAsync();
-        }
-
-        [RelayCommand]
-        private async Task GalleryEditProfile()
-        {
-            // Close authorized flyout.
-            await dialogService.ShowGalleryEditProfileDialogAsync();
-        }
-
         private MainNavigationItem[] GetPages()
         {
             return [
                 new() { Name = GetPageName(ContentPageType.library), Glyph = "\uE8A9", PageType = ContentPageType.library},
-                new() { Name = GetPageName(ContentPageType.gallery), Glyph = "\uE719", PageType = ContentPageType.gallery },
                 new()
                 {
                     Name = GetPageName(ContentPageType.appupdate),
@@ -598,7 +523,6 @@ namespace Lively.UI.Shared.ViewModels
             return pageType switch
             {
                 ContentPageType.library => i18n.GetString("TitleLibrary"),
-                ContentPageType.gallery => i18n.GetString("TitleGallery"),
                 ContentPageType.appupdate => i18n.GetString("TitleUpdates"),
                 ContentPageType.settingsGeneral => i18n.GetString("TitleGeneral"),
                 ContentPageType.settingsPerformance => i18n.GetString("TitlePerformance"),

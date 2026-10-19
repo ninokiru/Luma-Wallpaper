@@ -230,7 +230,7 @@ Updates will be frequent and may contain bugs!</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
     <value>Failed to update; try downloading the installer from:
-https://github.com/ninokiru/Lively-Wallpaper/releases</value>
+https://github.com/ninokiru/Luma-Wallpaper/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
     <value>Damaged wallpaper file, try redownloading</value>
@@ -239,7 +239,7 @@ https://github.com/ninokiru/Lively-Wallpaper/releases</value>
     <value>Oops... Looks like something went wrong :(
 In order to better understand this error and fix the issue, share the log file with the developer.
 Instructions for sharing log file:
-https://github.com/rocksdanister/lively/wiki</value>
+https://github.com/ninokiru/Luma-Wallpaper/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
     <value>Luma cannot work properly with Windows High Contrast mode enabled!
@@ -251,7 +251,7 @@ Try changing the videoplayer in lively settings.
 
 In order to better understand this error and fix the issue, share the log file with the developer.
 Instructions for sharing log file:
-https://github.com/rocksdanister/lively/wiki</value>
+https://github.com/ninokiru/Luma-Wallpaper/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
     <value>Not Luma wallpaper file</value>

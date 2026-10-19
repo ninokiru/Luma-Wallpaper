@@ -83,12 +83,12 @@
             Visibility="{Binding AppThemeBackground, Mode=OneWay, Converter={StaticResource StringVisibilityConverter}}" />
         <Rectangle
             Grid.Row="0"
-            Fill="{ThemeResource SystemAltMediumColor}"
+            Fill="{ThemeResource LayerFillColorDefaultBrush}"
             Stretch="Fill"
             Visibility="{Binding AppThemeBackground, Mode=OneWay, Converter={StaticResource StringVisibilityConverter}}" />
         <Rectangle
             Grid.RowSpan="2"
-            Fill="{ThemeResource SystemControlAcrylicElementBrush}"
+            Fill="{ThemeResource LayerOnAcrylicFillColorDefaultBrush}"
             Stretch="Fill"
             Visibility="{Binding AppThemeBackground, Mode=OneWay, Converter={StaticResource StringVisibilityConverter}}" />
 
@@ -209,85 +209,6 @@
                         </AppBarButton.Icon>
                     </AppBarButton>
                     <AppBarSeparator />
-                    <!--  Gallery Authorized  -->
-                    <!--  Visibility="{Binding IsLoggedIn, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"  -->
-                    <AppBarButton
-                        MaxWidth="50"
-                        Padding="0"
-                        LabelPosition="Collapsed"
-                        Visibility="Collapsed">
-                        <AppBarButton.Flyout>
-                            <Flyout>
-                                <StackPanel MinWidth="150">
-                                    <TextBlock
-                                        HorizontalAlignment="Center"
-                                        FontSize="18"
-                                        FontWeight="SemiBold"
-                                        Text="Account" />
-                                    <StackPanel
-                                        Margin="0,8,0,8"
-                                        Padding="0"
-                                        HorizontalAlignment="Center"
-                                        Orientation="Vertical">
-                                        <!--  Avatar  -->
-                                        <!--  PersonPicture control not updating sometimes  -->
-                                        <Border MaxWidth="100" CornerRadius="50">
-                                            <Image Source="{Binding DisplayAvatar, Mode=OneWay, Converter={StaticResource UriToBitmapImageConverter}}" Stretch="Fill" />
-                                        </Border>
-                                        <TextBlock
-                                            HorizontalAlignment="Center"
-                                            FontWeight="Medium"
-                                            Text="{Binding DisplayUserName}" />
-                                    </StackPanel>
-                                    <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
-                                        <HyperlinkButton
-                                            Command="{Binding GalleryEditProfileCommand}"
-                                            Content="Manage"
-                                            Visibility="Collapsed" />
-                                        <HyperlinkButton x:Uid="GalleryAccountLogout" Command="{Binding GalleryLogoutCommand}" />
-                                    </StackPanel>
-                                </StackPanel>
-                            </Flyout>
-                        </AppBarButton.Flyout>
-                        <AppBarButton.Content>
-                            <!--  Avatar  -->
-                            <!--  Same animated image(?) for multiple PersonPicture control causes flicker(?)  -->
-                            <Border
-                                MaxWidth="100"
-                                Margin="-22"
-                                CornerRadius="50">
-                                <Image Source="{Binding DisplayAvatar, Mode=OneWay, Converter={StaticResource UriToBitmapImageConverter}}" Stretch="Fill" />
-                            </Border>
-                        </AppBarButton.Content>
-                    </AppBarButton>
-                    <!--  Gallery Unauthorized  -->
-                    <!--  Visibility="{Binding IsLoggedIn, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=Reverse}"  -->
-                    <AppBarButton Padding="0,0,0,0" Visibility="Collapsed">
-                        <AppBarButton.Icon>
-                            <SymbolIcon Symbol="Contact">
-                                <SymbolIcon.RenderTransform>
-                                    <TranslateTransform X="4" />
-                                </SymbolIcon.RenderTransform>
-                            </SymbolIcon>
-                        </AppBarButton.Icon>
-                        <AppBarButton.Flyout>
-                            <Flyout>
-                                <StackPanel MinWidth="150">
-                                    <TextBlock
-                                        x:Uid="GalleryAccount"
-                                        HorizontalAlignment="Center"
-                                        FontSize="18"
-                                        FontWeight="SemiBold" />
-                                    <PersonPicture Margin="0,5,0,0" />
-                                    <HyperlinkButton
-                                        x:Uid="GalleryAccountLogin"
-                                        Margin="0,5,0,0"
-                                        HorizontalAlignment="Center"
-                                        Command="{Binding GalleryAuthCommand}" />
-                                </StackPanel>
-                            </Flyout>
-                        </AppBarButton.Flyout>
-                    </AppBarButton>
                     <!--  Settings  -->
                     <AppBarButton
                         MaxWidth="50"
@@ -331,7 +252,7 @@
                 <ScrollViewer MaxHeight="300">
                     <TextBlock Text="{Binding ErrorNotification.Message}" TextWrapping="Wrap" />
                 </ScrollViewer>
-                <HyperlinkButton NavigateUri="https://github.com/rocksdanister/lively/wiki/Common-Problems">
+                <HyperlinkButton NavigateUri="https://github.com/ninokiru/Luma-Wallpaper/wiki/Common-Problems">
                     <TextBlock x:Uid="TextLearnMore" />
                 </HyperlinkButton>
             </StackPanel>

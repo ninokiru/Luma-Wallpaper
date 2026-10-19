@@ -1,0 +1,10 @@
+<Project>
+  <!--  Luma only ships English and Vietnamese, so the satellite resource dll files of every
+        other language are dropped from the build output instead of being published and never
+        read. This covers both the resources compiled here and the ones NuGet packages carry.
+        The UI project has its own Directory.Build.props, which stops the search for a parent
+        file, so the same property is declared there too. -->
+  <PropertyGroup>
+    <SatelliteResourceLanguages>en;en-US;vi;vi-VN</SatelliteResourceLanguages>
+  </PropertyGroup>
+</Project>

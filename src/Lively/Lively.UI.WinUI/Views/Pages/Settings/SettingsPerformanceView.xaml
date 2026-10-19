@@ -168,7 +168,7 @@
                         IsOpen="True"
                         Severity="Informational">
                         <InfoBar.ActionButton>
-                            <HyperlinkButton NavigateUri="https://github.com/rocksdanister/lively/wiki/Performance" ToolTipService.ToolTip="https://github.com/rocksdanister/lively/wiki/Performance">
+                            <HyperlinkButton NavigateUri="https://github.com/ninokiru/Luma-Wallpaper/wiki/Performance" ToolTipService.ToolTip="https://github.com/ninokiru/Luma-Wallpaper/wiki/Performance">
                                 <HyperlinkButton.Content>
                                     <TextBlock x:Uid="TextLearnMore" TextWrapping="Wrap" />
                                 </HyperlinkButton.Content>

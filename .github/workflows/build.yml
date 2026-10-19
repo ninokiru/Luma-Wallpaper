@@ -36,17 +36,19 @@ jobs:
       # The in-app updater compares the installed assembly version against the newest
       # release tag: a tagged build that kept the version committed in the csproj would
       # offer the very same update forever. Stamped once here, read by every publish.
+      # Three parts, matching the tag - the UI prints this and a trailing ".0" reads as
+      # a different number than the release it came from.
       - name: Resolve build version
         shell: pwsh
         run: |
-          $version = '0.0.1.0'
+          $version = '0.0.1'
           if ($env:GITHUB_REF_TYPE -eq 'tag') {
             $raw = ($env:GITHUB_REF_NAME -replace '^v', '') -replace '-.*$', ''
             $parts = @($raw.Split('.') | Where-Object { $_ -match '^\d+$' })
             if ($parts.Count -ge 1) {
-              while ($parts.Count -lt 4) { $parts += '0' }
+              while ($parts.Count -lt 3) { $parts += '0' }
               # AssemblyVersion fields are 16 bit, a bigger part would fail the compile.
-              $limited = @($parts[0..3] | ForEach-Object { [Math]::Min([int]$_, 65535) })
+              $limited = @($parts[0..2] | ForEach-Object { [Math]::Min([int]$_, 65535) })
               $version = ($limited -join '.')
             }
           }

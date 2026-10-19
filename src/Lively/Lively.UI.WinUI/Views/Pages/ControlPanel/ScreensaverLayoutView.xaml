@@ -94,7 +94,7 @@
                 Margin="5"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
-                NavigateUri="https://github.com/rocksdanister/lively/wiki/Screen-Saver#setup-instructions">
+                NavigateUri="https://github.com/ninokiru/Luma-Wallpaper/wiki/Screen-Saver#setup-instructions">
                 <ToolTipService.ToolTip>
                     <TextBlock x:Uid="ScreensaverPluginMessage" />
                 </ToolTipService.ToolTip>
@@ -116,8 +116,8 @@
                 <InfoBar.ActionButton>
                     <HyperlinkButton
                         MinHeight="45"
-                        NavigateUri="https://github.com/rocksdanister/lively/wiki/Screen-Saver"
-                        ToolTipService.ToolTip="https://github.com/rocksdanister/lively/wiki/Screen-Saver">
+                        NavigateUri="https://github.com/ninokiru/Luma-Wallpaper/wiki/Screen-Saver"
+                        ToolTipService.ToolTip="https://github.com/ninokiru/Luma-Wallpaper/wiki/Screen-Saver">
                         <HyperlinkButton.Content>
                             <TextBlock x:Uid="ScreensaverPluginMessage" TextWrapping="Wrap" />
                         </HyperlinkButton.Content>
