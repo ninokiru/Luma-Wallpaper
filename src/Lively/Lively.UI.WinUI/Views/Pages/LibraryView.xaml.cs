@@ -77,7 +77,8 @@ namespace Lively.UI.WinUI.Views.Pages
                     // The save picker throws on a suggested name that cannot be a file name, and a
                     // title is whatever the wallpaper author wrote, so it is cleaned up first.
                     var invalidChars = Path.GetInvalidFileNameChars();
-                    var zipName = new string(obj.Title?.Select(c => invalidChars.Contains(c) ? '_' : c).ToArray() ?? "wallpaper") + ".zip";
+                    var title = string.IsNullOrWhiteSpace(obj.Title) ? "wallpaper" : obj.Title;
+                    var zipName = new string(title.Select(c => invalidChars.Contains(c) ? '_' : c).ToArray()) + ".zip";
                     var saveFile = await fileService.PickSaveFileAsync(
                         zipName,
                         new[] { ("Luma Wallpaper package", new[] { ".zip" }) });

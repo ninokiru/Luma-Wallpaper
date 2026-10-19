@@ -19,7 +19,7 @@ public class AudioDeviceFactory : IAudioDeviceFactory
 {
     private readonly string cacheDir = Path.Combine(Constants.CommonPaths.TempDir, "icons");
 
-    public AudioDevice? GetDefaultRenderDevice()
+    public AudioDevice GetDefaultRenderDevice()
     {
         using var enumerator = new MMDeviceEnumerator();
         var device = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Console);
@@ -33,7 +33,7 @@ public class AudioDeviceFactory : IAudioDeviceFactory
         return devices.Select(ToAudioDevice).ToList();
     }
 
-    public AudioDevice? GetDeviceById(string id)
+    public AudioDevice GetDeviceById(string id)
     {
         try
         {

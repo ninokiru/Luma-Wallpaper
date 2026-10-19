@@ -61,7 +61,6 @@ namespace Lively.Grpc.Client
             {
                 LivelyInfoPath = livelyInfoPath,
                 MonitorId = monitorId,
-                Type = LibraryItemCategory.Ready,
             };
             _ = await client.SetWallpaperAsync(request);
         }

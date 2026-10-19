@@ -10,12 +10,12 @@ namespace Lively.UI.WinUI.Services
     public class DialogNavigator : IDialogNavigator
     {
         /// <inheritdoc/>
-        public event EventHandler<DialogPageType>? ContentPageChanged;
+        public event EventHandler<DialogPageType> ContentPageChanged;
 
-        public object? RootFrame { get; set; }
+        public object RootFrame { get; set; }
 
         /// <inheritdoc/>
-        public object? Frame { get; set; }
+        public object Frame { get; set; }
 
         public DialogPageType? CurrentPage { get; private set; } = null;
 

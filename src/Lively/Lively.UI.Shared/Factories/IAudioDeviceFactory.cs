@@ -7,5 +7,5 @@ public interface IAudioDeviceFactory
 {
     AudioDevice GetDefaultRenderDevice();
     IEnumerable<AudioDevice> GetRenderDevices();
-    AudioDevice? GetDeviceById(string id);
+    AudioDevice GetDeviceById(string id);
 }

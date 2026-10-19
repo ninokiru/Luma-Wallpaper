@@ -2,7 +2,9 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFrameworks>net9.0;net472</TargetFrameworks>
+    <!-- The net472 leg has no consumer left, and a plain net9.0 target turns every
+         Windows-only API (PerformanceCounter, System.Drawing) into a CA1416 warning. -->
+    <TargetFramework>net9.0-windows</TargetFramework>
     <LangVersion>9.0</LangVersion>
   </PropertyGroup>
 

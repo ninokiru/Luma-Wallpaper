@@ -13,9 +13,10 @@ namespace Lively.ML.DepthEstimate
 {
     public class MiDaS : IDepthEstimate
     {
-        public string ModelPath { get; private set; }
-        private InferenceSession session;
-        private string inputName;
+        // Filled in by LoadModel, which every caller runs before touching this instance.
+        public string ModelPath { get; private set; } = null!;
+        private InferenceSession session = null!;
+        private string inputName = null!;
         private int width, height;
         private bool disposedValue;
 
@@ -47,12 +48,14 @@ namespace Lively.ML.DepthEstimate
             inputImage.Resize(new MagickGeometry((uint)width, (uint)height) { IgnoreAspectRatio = true });
 
             var t1 = new DenseTensor<float>(new[] { 1, 3, height, width });
+            // One pinned view for the whole loop instead of one per pixel.
+            using var pixels = inputImage.GetPixels();
             for (var y = 0; y < height; y++)
             {
                 for (var x = 0; x < width; x++)
                 {
-                    using var pixels = inputImage.GetPixels();
-                    var color = pixels.GetPixel(x, y).ToColor();
+                    var color = pixels.GetPixel(x, y).ToColor()
+                        ?? throw new InvalidOperationException($"No colour at {x},{y} of: {imagePath}");
                     t1[0, 0, y, x] = color.R / 255f;
                     t1[0, 1, y, x] = color.G / 255f;
                     t1[0, 2, y, x] = color.B / 255f;

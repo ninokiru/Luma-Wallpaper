@@ -13,12 +13,12 @@ namespace Lively.UI.WinUI.Services
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
         /// <inheritdoc/>
-        public event EventHandler<ContentPageType>? ContentPageChanged;
+        public event EventHandler<ContentPageType> ContentPageChanged;
 
-        public object? RootFrame { get; set; }
+        public object RootFrame { get; set; }
 
         /// <inheritdoc/>
-        public object? Frame { get; set; }
+        public object Frame { get; set; }
 
         public ContentPageType? CurrentPage { get; private set; } = null;
 
