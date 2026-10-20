@@ -46,7 +46,7 @@ namespace Lively.ViewModels
         [RelayCommand]
         private void OpenHelp()
         {
-            LinkUtil.OpenBrowser("https://github.com/ninokiru/Luma-Wallpaper/wiki/Common-Problems");
+            LinkUtil.OpenBrowser("https://github.com/ninokiru/Luma-Wallpaper/issues");
         }
 
         [RelayCommand]

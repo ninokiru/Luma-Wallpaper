@@ -1098,9 +1098,8 @@ namespace Lively.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Oops... Looks like something went wrong :(
-        ///In order to better understand this error and fix the issue, share the log file with the developer.
-        ///Instructions for sharing log file:
-        ///https://github.com/rocksdanister/lively/wiki.
+        ///Export the log file from the System page in Settings and attach it to a new issue:
+        ///https://github.com/ninokiru/Luma-Wallpaper/issues.
         /// </summary>
         public static string LivelyExceptionGeneral {
             get {
@@ -1120,11 +1119,8 @@ namespace Lively.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Media playback failed :(
-        ///Try changing the videoplayer in lively settings.
-        ///
-        ///In order to better understand this error and fix the issue, share the log file with the developer.
-        ///Instructions for sharing log file:
-        ///https://github.com/rocksdanister/lively/wiki.
+        ///Export the log file from the System page in Settings and attach it to a new issue:
+        ///https://github.com/ninokiru/Luma-Wallpaper/issues.
         /// </summary>
         public static string LivelyExceptionMediaPlayback {
             get {

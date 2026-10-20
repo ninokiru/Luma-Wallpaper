@@ -29,14 +29,14 @@ namespace Lively.UI.WinUI.Views.Pages
             this.InitializeComponent();
         }
 
-        private void WebsiteCard_Click(object sender, RoutedEventArgs e) => LinkUtil.OpenBrowser("https://www.livelywallpaper.net");
+        private void WebsiteCard_Click(object sender, RoutedEventArgs e) => LinkUtil.OpenBrowser("https://github.com/ninokiru/Luma-Wallpaper/releases");
 
-        private void DocumentationCard_Click(object sender, RoutedEventArgs e) => LinkUtil.OpenBrowser("https://github.com/ninokiru/Luma-Wallpaper/wiki");
+        private void DocumentationCard_Click(object sender, RoutedEventArgs e) => LinkUtil.OpenBrowser("https://github.com/ninokiru/Luma-Wallpaper/blob/main/README.md");
 
-        private void CommunityCard_Click(object sender, RoutedEventArgs e) => LinkUtil.OpenBrowser("https://github.com/ninokiru/Luma-Wallpaper/discussions");
+        private void CommunityCard_Click(object sender, RoutedEventArgs e) => LinkUtil.OpenBrowser("https://github.com/ninokiru/Luma-Wallpaper/issues");
 
         private void SoureCodeCard_Click(object sender, RoutedEventArgs e) => LinkUtil.OpenBrowser("https://github.com/ninokiru/Luma-Wallpaper");
 
-        private void ReportBugCard_Click(object sender, RoutedEventArgs e) => LinkUtil.OpenBrowser("https://github.com/ninokiru/Luma-Wallpaper/wiki/Common-Problems");
+        private void ReportBugCard_Click(object sender, RoutedEventArgs e) => LinkUtil.OpenBrowser("https://github.com/ninokiru/Luma-Wallpaper/issues/new");
     }
 }

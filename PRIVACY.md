@@ -45,4 +45,6 @@ If you have questions about this application, please [fill an issue on GitHub](h
 
 **Footnotes**
 
-Instructions on retrieving local log file [can be found here.](https://github.com/ninokiru/Luma-Wallpaper/wiki/Common-Problems)
+The local log files are written to `%LocalAppData%\Luma Wallpaper\logs`, one file per run for the
+core, the UI and each wallpaper player. They stay on the machine and are only shared when you
+attach them to an issue.

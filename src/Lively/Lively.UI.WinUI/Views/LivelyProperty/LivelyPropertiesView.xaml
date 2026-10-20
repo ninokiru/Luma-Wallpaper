@@ -163,7 +163,7 @@
             Severity="Error"
             Visibility="{Binding ErrorText, Mode=OneWay, Converter={StaticResource NullVisibilityConverter}}">
             <InfoBar.ActionButton>
-                <HyperlinkButton NavigateUri="https://github.com/ninokiru/Luma-Wallpaper/wiki/Common-Problems" ToolTipService.ToolTip="https://github.com/ninokiru/Luma-Wallpaper/wiki/Common-Problems">
+                <HyperlinkButton NavigateUri="https://github.com/ninokiru/Luma-Wallpaper/issues" ToolTipService.ToolTip="https://github.com/ninokiru/Luma-Wallpaper/issues">
                     <HyperlinkButton.Content>
                         <TextBlock x:Uid="TextLearnMore" TextWrapping="Wrap" />
                     </HyperlinkButton.Content>
@@ -178,7 +178,7 @@
             Severity="Informational"
             Visibility="{Binding InfoText, Mode=OneWay, Converter={StaticResource NullVisibilityConverter}}">
             <InfoBar.ActionButton>
-                <HyperlinkButton NavigateUri="https://github.com/ninokiru/Luma-Wallpaper/wiki/Web-Guide-IV-:-Interaction" ToolTipService.ToolTip="https://github.com/ninokiru/Luma-Wallpaper/wiki/Web-Guide-IV-:-Interaction">
+                <HyperlinkButton NavigateUri="https://github.com/ninokiru/Luma-Wallpaper/blob/main/schemas/livelyPropertiesSchema.json" ToolTipService.ToolTip="https://github.com/ninokiru/Luma-Wallpaper/blob/main/schemas/livelyPropertiesSchema.json">
                     <HyperlinkButton.Content>
                         <TextBlock x:Uid="TextLearnMore" TextWrapping="Wrap" />
                     </HyperlinkButton.Content>

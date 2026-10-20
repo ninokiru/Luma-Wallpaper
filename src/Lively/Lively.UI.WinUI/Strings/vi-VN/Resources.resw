@@ -130,10 +130,10 @@
     <value>Âm thanh</value>
   </data>
   <data name="Community.Description" xml:space="preserve">
-    <value>Diễn đàn thảo luận online</value>
+    <value>Hỏi đáp và các lỗi đã biết, theo dõi trong Issues</value>
   </data>
   <data name="Documentation.Description" xml:space="preserve">
-    <value>Tư liệu API và hỗ trợ</value>
+    <value>Hướng dẫn tính năng, định dạng tệp và thiết lập</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
     <value>Luma đã gặp sự cố nghiêm trọng. 
@@ -144,7 +144,7 @@ Windows Explorer đã khởi động lại 2 lần trong 30 giây! Đây có th�
     <value>Phát hiện chương trình không tương thích, taskbar theming đã bị tắt</value>
   </data>
   <data name="Website.Description" xml:space="preserve">
-    <value>Trang chính thức của Luma Wallpaper</value>
+    <value>Mọi phiên bản đều đăng trên GitHub Releases</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>Hầu như tất cả màn hình LCD và LED đều không bị burn-in(lưu ảnh màn hình) nên bất kỳ hình nền nào cũng có thể sử dụng làm màn hình chờ.
@@ -237,9 +237,8 @@ https://github.com/ninokiru/Luma-Wallpaper/releases</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
     <value>Oops... Có vấn đề xảy ra :(
-Để hiểu rõ hơn lỗi và có thể giải quyết vấn đề này, xin hãy chia sẻ file log với người phát triển.
-Hướng dẫn chia sẻ file log:
-https://github.com/ninokiru/Luma-Wallpaper/wiki</value>
+Để hiểu rõ lỗi và giúp người phát triển sửa vấn đề, hãy xuất file log ở trang Hệ thống trong phần Cài đặt rồi đính kèm vào một issue mới:
+https://github.com/ninokiru/Luma-Wallpaper/issues</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
     <value>Luma không thể hoạt động tốt trên Windows bật chế độ tương phản cao!
@@ -247,11 +246,8 @@ Hãy tắt chế độ tương phản cao và thử lại.</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
     <value>Không thể phát lại video :(
-thử thay đổi trình phát video trong phần cài đặt của Luma.
-
-Để hiểu rõ hơn lỗi và có thể giải quyết vấn đề này, xin hãy chia sẻ file log với người phát triển.
-Hướng dẫn chia sẻ file log:
-https://github.com/ninokiru/Luma-Wallpaper/wiki</value>
+Để được hỗ trợ, hãy xuất file log ở trang Hệ thống trong phần Cài đặt rồi đính kèm vào một issue mới:
+https://github.com/ninokiru/Luma-Wallpaper/issues</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
     <value>Không phải file hình nền của Luma.</value>
@@ -584,7 +580,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Loại</value>
   </data>
   <data name="Website.Header" xml:space="preserve">
-    <value>Trang web</value>
+    <value>Tải về</value>
   </data>
   <data name="TextWebStream" xml:space="preserve">
     <value>Stream từ web</value>
@@ -992,12 +988,6 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
   <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
     <value>Phản chiếu</value>
   </data>
-  <data name="ScreensaverPlugin.Title" xml:space="preserve">
-    <value>Cần Plugin</value>
-  </data>
-  <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
-    <value>Cần phải setup lần đầu để sử dụng màn hình chờ</value>
-  </data>
   <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
     <value>Luôn luôn chọn màn hình khi chọn hình nền</value>
   </data>
@@ -1098,7 +1088,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Đang tải xuống</value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
-    <value>Những người đóng góp</value>
+    <value>Dựa trên Lively Wallpaper của Dani John</value>
   </data>
   <data name="TextShare.Text" xml:space="preserve">
     <value>Chia sẻ</value>

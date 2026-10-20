@@ -237,9 +237,8 @@ https://github.com/ninokiru/Luma-Wallpaper/releases</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
     <value>Oops... Có vấn đề xảy ra :(
-Để hiểu rõ hơn lỗi và có thể giải quyết vấn đề này, xin hãy chia sẻ file log với người phát triển.
-Hướng dẫn chia sẻ file log:
-https://github.com/ninokiru/Luma-Wallpaper/wiki</value>
+Để hiểu rõ lỗi và giúp người phát triển sửa vấn đề, hãy xuất file log ở trang Hệ thống trong phần Cài đặt rồi đính kèm vào một issue mới:
+https://github.com/ninokiru/Luma-Wallpaper/issues</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
     <value>Luma không thể hoạt động tốt trên Windows bật chế độ tương phản cao!
@@ -247,11 +246,8 @@ Hãy tắt chế độ tương phản cao và thử lại.</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
     <value>Không thể phát lại video :(
-thử thay đổi trình phát video trong phần cài đặt của Luma.
-
-Để hiểu rõ hơn lỗi và có thể giải quyết vấn đề này, xin hãy chia sẻ file log với người phát triển.
-Hướng dẫn chia sẻ file log:
-https://github.com/ninokiru/Luma-Wallpaper/wiki</value>
+Để được hỗ trợ, hãy xuất file log ở trang Hệ thống trong phần Cài đặt rồi đính kèm vào một issue mới:
+https://github.com/ninokiru/Luma-Wallpaper/issues</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
     <value>Không phải file hình nền của Luma.</value>

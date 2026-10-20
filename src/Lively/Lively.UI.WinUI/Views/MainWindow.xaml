@@ -252,7 +252,7 @@
                 <ScrollViewer MaxHeight="300">
                     <TextBlock Text="{Binding ErrorNotification.Message}" TextWrapping="Wrap" />
                 </ScrollViewer>
-                <HyperlinkButton NavigateUri="https://github.com/ninokiru/Luma-Wallpaper/wiki/Common-Problems">
+                <HyperlinkButton NavigateUri="https://github.com/ninokiru/Luma-Wallpaper/issues">
                     <TextBlock x:Uid="TextLearnMore" />
                 </HyperlinkButton>
             </StackPanel>

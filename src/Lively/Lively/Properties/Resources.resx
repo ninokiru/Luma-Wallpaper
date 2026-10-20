@@ -237,9 +237,8 @@ https://github.com/ninokiru/Luma-Wallpaper/releases</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
     <value>Oops... Looks like something went wrong :(
-In order to better understand this error and fix the issue, share the log file with the developer.
-Instructions for sharing log file:
-https://github.com/ninokiru/Luma-Wallpaper/wiki</value>
+Export the log file from the System page in Settings and attach it to a new issue:
+https://github.com/ninokiru/Luma-Wallpaper/issues</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
     <value>Luma cannot work properly with Windows High Contrast mode enabled!
@@ -247,11 +246,8 @@ Disable High Contrast mode and try again</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
     <value>Media playback failed :(
-Try changing the videoplayer in lively settings.
-
-In order to better understand this error and fix the issue, share the log file with the developer.
-Instructions for sharing log file:
-https://github.com/ninokiru/Luma-Wallpaper/wiki</value>
+Export the log file from the System page in Settings and attach it to a new issue:
+https://github.com/ninokiru/Luma-Wallpaper/issues</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
     <value>Not Luma wallpaper file</value>

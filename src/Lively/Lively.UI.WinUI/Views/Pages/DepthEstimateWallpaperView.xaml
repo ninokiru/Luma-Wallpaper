@@ -139,7 +139,7 @@
         <!--  Error message  -->
         <StackPanel Margin="5" Visibility="{Binding ErrorText, Converter={StaticResource StringVisibilityConverter}, Mode=OneWay}">
             <TextBlock Foreground="Red" Text="{Binding ErrorText}" />
-            <HyperlinkButton Content="https://github.com/ninokiru/Luma-Wallpaper/wiki/machine-learning" NavigateUri="https://github.com/ninokiru/Luma-Wallpaper/wiki/machine-learning" />
+            <HyperlinkButton Content="https://github.com/ninokiru/Luma-Wallpaper/blob/main/README.md" NavigateUri="https://github.com/ninokiru/Luma-Wallpaper/blob/main/README.md" />
         </StackPanel>
 
         <!--  ref: https://github.com/huynhsontung/Screenbox/blob/main/Screenbox/Pages/PlayerPage.xaml  -->

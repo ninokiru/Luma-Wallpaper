@@ -1,16 +1,16 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "title": "JSON schema for Luma Wallpaper LivelyProperties.json files",
-  "description": "https://github.com/ninokiru/Luma-Wallpaper/wiki/Web-Guide-IV-:-Interaction#lively-properties",
+  "description": "https://github.com/ninokiru/Luma-Wallpaper/blob/main/schemas/livelyPropertiesSchema.json",
   "type": "object",
   "additionalProperties": {
     "type": "object",
     "title": "Setting",
-    "description": "https://github.com/ninokiru/Luma-Wallpaper/wiki/Web-Guide-IV-:-Interaction#controls",
+    "description": "https://github.com/ninokiru/Luma-Wallpaper/blob/main/schemas/livelyPropertiesSchema.json",
     "properties": {
       "type": {
         "title": "Setting Type",
-        "description": "https://github.com/ninokiru/Luma-Wallpaper/wiki/Web-Guide-IV-:-Interaction#controls",
+        "description": "https://github.com/ninokiru/Luma-Wallpaper/blob/main/schemas/livelyPropertiesSchema.json",
         "enum": [
           "slider",
           "textbox",
@@ -28,7 +28,7 @@
       {
         "type": "object",
         "title": "Slider",
-        "description": "https://github.com/ninokiru/Luma-Wallpaper/wiki/Web-Guide-IV-:-Interaction#slider",
+        "description": "https://github.com/ninokiru/Luma-Wallpaper/blob/main/schemas/livelyPropertiesSchema.json",
         "properties": {
           "type": {
             "const": "slider"
@@ -65,7 +65,7 @@
       {
         "type": "object",
         "title": "Text Box",
-        "description": "https://github.com/ninokiru/Luma-Wallpaper/wiki/Web-Guide-IV-:-Interaction#textbox",
+        "description": "https://github.com/ninokiru/Luma-Wallpaper/blob/main/schemas/livelyPropertiesSchema.json",
         "properties": {
           "type": {
             "const": "textbox"
@@ -87,7 +87,7 @@
       {
         "type": "object",
         "title": "Dropdown",
-        "description": "https://github.com/ninokiru/Luma-Wallpaper/wiki/Web-Guide-IV-:-Interaction#dropdown",
+        "description": "https://github.com/ninokiru/Luma-Wallpaper/blob/main/schemas/livelyPropertiesSchema.json",
         "properties": {
           "type": {
             "const": "dropdown"
@@ -114,7 +114,7 @@
       {
         "type": "object",
         "title": "Folder Dropdown",
-        "description": "https://github.com/ninokiru/Luma-Wallpaper/wiki/Web-Guide-IV-:-Interaction#folder-dropdown",
+        "description": "https://github.com/ninokiru/Luma-Wallpaper/blob/main/schemas/livelyPropertiesSchema.json",
         "properties": {
           "type": {
             "const": "folderDropdown"
@@ -146,7 +146,7 @@
       {
         "type": "object",
         "title": "Button",
-        "description": "https://github.com/ninokiru/Luma-Wallpaper/wiki/Web-Guide-IV-:-Interaction#button",
+        "description": "https://github.com/ninokiru/Luma-Wallpaper/blob/main/schemas/livelyPropertiesSchema.json",
         "properties": {
           "type": {
             "const": "button"
@@ -168,7 +168,7 @@
       {
         "type": "object",
         "title": "Label",
-        "description": "https://github.com/ninokiru/Luma-Wallpaper/wiki/Web-Guide-IV-:-Interaction#label",
+        "description": "https://github.com/ninokiru/Luma-Wallpaper/blob/main/schemas/livelyPropertiesSchema.json",
         "properties": {
           "type": {
             "const": "label"
@@ -184,7 +184,7 @@
       {
         "type": "object",
         "title": "Color Picker",
-        "description": "https://github.com/ninokiru/Luma-Wallpaper/wiki/Web-Guide-IV-:-Interaction#color-picker",
+        "description": "https://github.com/ninokiru/Luma-Wallpaper/blob/main/schemas/livelyPropertiesSchema.json",
         "properties": {
           "type": {
             "const": "color"
@@ -206,7 +206,7 @@
       {
         "type": "object",
         "title": "Check Box",
-        "description": "https://github.com/ninokiru/Luma-Wallpaper/wiki/Web-Guide-IV-:-Interaction#checkbox",
+        "description": "https://github.com/ninokiru/Luma-Wallpaper/blob/main/schemas/livelyPropertiesSchema.json",
         "properties": {
           "type": {
             "const": "checkbox"

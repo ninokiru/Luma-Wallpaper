@@ -12,8 +12,9 @@ body:
         2. Only post one issue per bug report.
         3. Try not to make duplicate issues — search before posting.
         4. Add a title that clearly describes the issue.
-        5. Check the wiki to see if your question is already answered:
-           https://github.com/ninokiru/Luma-Wallpaper/wiki/Common-Problems
+        5. This fork has no wiki — search
+           [the open and closed issues](https://github.com/ninokiru/Luma-Wallpaper/issues?q=is%3Aissue)
+           before writing, and attach the files from `%LocalAppData%\Luma Wallpaper\logs`.
 
   - type: textarea
     id: description

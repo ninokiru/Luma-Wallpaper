@@ -5,17 +5,13 @@
     xmlns:controls="using:CommunityToolkit.WinUI.Controls"
     xmlns:converters="using:CommunityToolkit.WinUI.Converters"
     xmlns:customControls="using:Lively.UI.WinUI.UserControls"
-    xmlns:customconverters="using:Lively.UI.WinUI.Helpers.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages.ControlPanel"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:media="using:CommunityToolkit.WinUI.Media"
     Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
     mc:Ignorable="d">
 
     <Page.Resources>
-        <customconverters:BooleanToVisibilityConverter x:Key="VisibilityConverter" />
-        <converters:BoolNegationConverter x:Key="BoolNegationConverter" />
         <converters:StringFormatConverter x:Key="StringFormatConverter" />
     </Page.Resources>
 
@@ -94,36 +90,12 @@
                 Margin="5"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
-                NavigateUri="https://github.com/ninokiru/Luma-Wallpaper/wiki/Screen-Saver#setup-instructions">
+                NavigateUri="https://github.com/ninokiru/Luma-Wallpaper/blob/main/README.md">
                 <ToolTipService.ToolTip>
-                    <TextBlock x:Uid="ScreensaverPluginMessage" />
+                    <TextBlock x:Uid="TextLearnMore" />
                 </ToolTipService.ToolTip>
                 <FontIcon FontSize="16" Glyph="&#xE897;" />
             </HyperlinkButton>
-            <Border Grid.RowSpan="2" Visibility="{Binding IsScreensaverPluginNotify, Mode=OneWay, Converter={StaticResource VisibilityConverter}}">
-                <Border.Background>
-                    <media:BackdropBlurBrush Amount="4" />
-                </Border.Background>
-            </Border>
-            <InfoBar
-                x:Uid="ScreensaverPlugin"
-                Grid.RowSpan="2"
-                VerticalAlignment="Top"
-                CloseButtonCommand="{Binding CloseScreensaverPluginNotifyCommand}"
-                IsOpen="True"
-                Severity="Warning"
-                Visibility="{Binding IsScreensaverPluginNotify, Mode=OneWay, Converter={StaticResource VisibilityConverter}}">
-                <InfoBar.ActionButton>
-                    <HyperlinkButton
-                        MinHeight="45"
-                        NavigateUri="https://github.com/ninokiru/Luma-Wallpaper/wiki/Screen-Saver"
-                        ToolTipService.ToolTip="https://github.com/ninokiru/Luma-Wallpaper/wiki/Screen-Saver">
-                        <HyperlinkButton.Content>
-                            <TextBlock x:Uid="ScreensaverPluginMessage" TextWrapping="Wrap" />
-                        </HyperlinkButton.Content>
-                    </HyperlinkButton>
-                </InfoBar.ActionButton>
-            </InfoBar>
         </Grid>
 
         <controls:SettingsExpander
@@ -131,7 +103,6 @@
             x:Uid="Screensaver"
             Grid.Row="1"
             Margin="0,5,0,0"
-            IsEnabled="{Binding IsScreensaverPluginNotify, Mode=OneWay, Converter={StaticResource BoolNegationConverter}}"
             IsExpanded="True">
             <controls:SettingsExpander.HeaderIcon>
                 <FontIcon Glyph="&#xE90C;" />
