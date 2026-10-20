@@ -9,7 +9,6 @@ using Lively.Common.Helpers.Shell;
 using Lively.Common.Services;
 using Lively.Core.Display;
 using Lively.Core.Suspend;
-using Lively.Core.Watchdog;
 using Lively.Extensions;
 using Lively.Factories;
 using Lively.Helpers;
@@ -68,7 +67,6 @@ namespace Lively.Core
         private readonly IWallpaperPluginFactory wallpaperFactory;
         private readonly IWallpaperLibraryFactory wallpaperLibraryFactory;
         private readonly ITransparentTbService ttbService;
-        private readonly IWatchdogService watchdog;
         private readonly IPlayback playback;
         private readonly IScreensaverService screensaver;
         private readonly RawInputMsgWindow rawInput;
@@ -81,7 +79,6 @@ namespace Lively.Core
             ITransparentTbService ttbService,
             IPlayback playback,
             IScreensaverService screensaver,
-            IWatchdogService watchdog,
             RawInputMsgWindow rawInput,
             WndProcMsgWindow wndProc,
             //IScreensaverService screensaver,
@@ -91,7 +88,6 @@ namespace Lively.Core
             this.userSettings = userSettings;
             this.displayManager = displayManager;
             this.ttbService = ttbService;
-            this.watchdog = watchdog;
             this.playback = playback;
             this.rawInput = rawInput;
             this.WndProc = wndProc;
@@ -322,9 +318,6 @@ namespace Lively.Core
                     return;
                 }
 
-                if (!watchdog.IsRunning)
-                    watchdog.Start();
-
                 IWallpaper currentWallpaper = null;
                 try
                 {
@@ -350,9 +343,6 @@ namespace Lively.Core
                                 if (currentWallpaper.Category.IsWebWallpaper())
                                     currentWallpaper.SetPlaybackPos(0, PlaybackPosType.absolutePercent);
 
-                                if (currentWallpaper.Pid is int pid)
-                                    watchdog.Add(pid);
-
                                 wallpapers.Add(currentWallpaper);
                             }
                             break;
@@ -370,9 +360,6 @@ namespace Lively.Core
 
                                 if (currentWallpaper.Category.IsWebWallpaper())
                                     currentWallpaper.SetPlaybackPos(0, PlaybackPosType.absolutePercent);
-
-                                if (currentWallpaper.Pid is int pid)
-                                    watchdog.Add(pid);
 
                                 wallpapers.Add(currentWallpaper);
                             }
@@ -393,9 +380,6 @@ namespace Lively.Core
 
                                     if (currentWallpaper.Category.IsWebWallpaper())
                                         currentWallpaper.SetPlaybackPos(0, PlaybackPosType.absolutePercent);
-
-                                    if (currentWallpaper.Pid is int pid)
-                                        watchdog.Add(pid);
 
                                     wallpapers.Add(currentWallpaper);
                                 }
@@ -464,8 +448,6 @@ namespace Lively.Core
             if (!isClosingWallpapers && sender is IWallpaper crashed && wallpapers.Remove(crashed))
             {
                 Logger.Warn($"Wallpaper process exited unexpectedly: {crashed.Model.LivelyInfo.Title}");
-                if (crashed.Pid is int deadPid)
-                    watchdog.Remove(deadPid);
                 crashed.Dispose();
 
                 ScheduleCrashRestart(crashed);
@@ -989,7 +971,6 @@ namespace Lively.Core
             {
                 CloseAndDispose(wallpapers);
                 wallpapers.Clear();
-                watchdog.Clear();
 
                 if (fireEvent)
                     WallpaperChanged?.Invoke(this, EventArgs.Empty);
@@ -1006,9 +987,6 @@ namespace Lively.Core
             {
                 items.ForEach(x =>
                 {
-                    if (x.Pid is int pid)
-                        watchdog.Remove(pid);
-
                     x.Close();
                     x.Dispose();
                 });

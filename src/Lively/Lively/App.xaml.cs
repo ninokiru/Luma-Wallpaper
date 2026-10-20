@@ -9,7 +9,6 @@ using Lively.Common.Services;
 using Lively.Core;
 using Lively.Core.Display;
 using Lively.Core.Suspend;
-using Lively.Core.Watchdog;
 using Lively.Factories;
 using Lively.Grpc.Common.Proto.Commands;
 using Lively.Grpc.Common.Proto.Desktop;
@@ -226,7 +225,6 @@ namespace Lively
                 // Singleton
                 .AddSingleton<IUserSettingsService, UserSettingsService>()
                 .AddSingleton<IDesktopCore, WinDesktopCore>()
-                .AddSingleton<IWatchdogService, WatchdogProcess>()
                 .AddSingleton<IDisplayManager, DisplayManager>()
                 .AddSingleton<IScreensaverService, ScreensaverService>()
                 .AddSingleton<IPlaylistService, PlaylistService>()

@@ -1259,9 +1259,6 @@ If still not working, close &amp; start Luma again/restart windows.
   <data name="VideoLetWindowsManageColor.Header" xml:space="preserve">
     <value>Let Windows manage colors</value>
   </data>
-  <data name="ScreensaverWindowsSettings.Header" xml:space="preserve">
-    <value>Windows Settings</value>
-  </data>
   <data name="DescriptionConfirmProjectDirectory.Text" xml:space="preserve">
     <value>Confirm project structure?</value>
   </data>
@@ -1411,11 +1408,5 @@ If still not working, close &amp; start Luma again/restart windows.
   </data>
   <data name="ScreensaverWaitTime.Description" xml:space="preserve">
     <value>Minutes of inactivity before the current wallpaper is used as a screensaver.</value>
-  </data>
-  <data name="ScreensaverWindowsHint.Title" xml:space="preserve">
-    <value>Windows setting</value>
-  </data>
-  <data name="ScreensaverWindowsHint.Message" xml:space="preserve">
-    <value>Windows only starts a .scr file: open the panel above and pick Luma in its screensaver list.</value>
   </data>
 </root>

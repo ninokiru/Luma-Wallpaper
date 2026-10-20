@@ -1,11 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using Lively.Common.Helpers;
 using Lively.Common.Services;
 using Lively.Grpc.Client;
 using Lively.Models;
 using Lively.Models.Enums;
-using System.Diagnostics;
 
 namespace Lively.UI.Shared.ViewModels
 {
@@ -83,22 +80,6 @@ namespace Lively.UI.Shared.ViewModels
                 }
                 SetProperty(ref _selectedScreensaverWaitIndex, value);
             }
-        }
-
-        [RelayCommand]
-        private void OpenWindowsSettings()
-        {
-            try
-            {
-                // Ref: https://help.ivanti.com/res/help/en_us/iwc/2021/help/Content/20030.htm
-                Process.Start(new ProcessStartInfo()
-                {
-                    FileName = "rundll32.exe",
-                    Arguments = "shell32.dll,Control_RunDLL desk.cpl,,1",
-                    UseShellExecute = true
-                });
-            }
-            catch { /* Nothing to do */ }
         }
 
         private void UpdateSettingsConfigFile()

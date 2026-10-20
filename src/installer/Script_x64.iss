@@ -11,11 +11,17 @@
 #define MyAppExeName "Lively.exe"
 
 [CustomMessages]
-english.DeleteEverythigMsgBox=Do you want to delete data folder?
-russian.DeleteEverythigMsgBox=Вы хотите удалить папку данных?
-spanish.DeleteEverythigMsgBox=¿Desea eliminar la carpeta de datos?
-chinese.DeleteEverythigMsgBox=您要删除数据文件夹吗？
-korean.DeleteEverythigMsgBox=데이터 폴더를 삭제하시겠습니까?
+; No prefix = the fallback used by every language that has no entry of its own.
+; The two folder paths are appended by the code, so these strings must not name a folder.
+DeleteEverythigMsgBox=Delete these folders and everything inside them?
+english.DeleteEverythigMsgBox=Delete these folders and everything inside them?
+vietnamese.DeleteEverythigMsgBox=Xóa những thư mục này và toàn bộ bên trong?
+russian.DeleteEverythigMsgBox=Удалить эти папки и всё их содержимое?
+spanish.DeleteEverythigMsgBox=¿Desea eliminar estas carpetas y todo su contenido?
+chinese.DeleteEverythigMsgBox=是否删除这些文件夹及其全部内容？
+korean.DeleteEverythigMsgBox=이 폴더들과 내용을 삭제하시겠습니까?
+CloseAppMsgBox=Luma Wallpaper is still running. Close it so the uninstall can finish?
+vietnamese.CloseAppMsgBox=Luma Wallpaper vẫn đang chạy. Đóng ứng dụng để gỡ cài đặt xong?
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -97,7 +103,13 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}";
 ;current user only
 Root: HKCU; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "Lively"; ValueData: """{app}\Lively.exe"""; Flags: uninsdeletevalue;
 
-;[UninstallDelete]
+; Inno only removes the files it wrote itself. Anything else that ended up in the folder
+; stayed forever: crash dumps, the plugins tree from builds before the engines were merged,
+; and every file of a previous version whose name changed. The app never writes next to its
+; own executables - settings, the wallpaper library and the screenshots all live under the
+; data folder - so the whole directory is program data and can go with the uninstall.
+[UninstallDelete]
+Type: filesandordirs; Name: "{app}"
 
 ; Core, UI and player are published into one shared folder now instead of plugins\UI and
 ; plugins\webview2. Inno only overwrites files, it never removes ones that disappeared, so
@@ -126,58 +138,50 @@ Filename: "{tmp}\VC_redist.x64.exe"; Parameters: /install /quiet /norestart; Che
 var
   isAlreadyInstalled: Boolean;
 
-// Visual C++ redistributive component install.
-// ref: https://bell0bytes.eu/inno-setup-vc/
-type
-  INSTALLSTATE = Longint;
-
-  const
-  INSTALLSTATE_INVALIDARG = -2;  { An invalid parameter was passed to the function. }
-  INSTALLSTATE_UNKNOWN = -1;     { The product is neither advertised or installed. }
-  INSTALLSTATE_ADVERTISED = 1;   { The product is advertised but not installed. }
-  INSTALLSTATE_ABSENT = 2;       { The product is installed for a different user. }
-  INSTALLSTATE_DEFAULT = 5;      { The product is installed for the current user. }
-
-#IFDEF UNICODE
-  #DEFINE AW "W"
-#ELSE
-  #DEFINE AW "A"
-#ENDIF
-
-function MsiQueryProductState(szProduct: string): INSTALLSTATE; 
-  external 'MsiQueryProductState{#AW}@msi.dll stdcall';
-
-//ref: https://github.com/DomGries/InnoDependencyInstaller
-function VCVersionInstalled(const ProductID: string): Boolean;
-begin
-  Result := MsiQueryProductState(ProductID) = INSTALLSTATE_DEFAULT;
-end;
-
+// Visual C++ 2015-2022 redistributable.
+// The installer only carries the x64 package, so the check has to look at the x64 runtime.
+// The old code asked Windows Installer for the x86 product code, which almost never matches
+// an x64 machine and made every install run the redist setup again, adding a reboot prompt
+// and a minute to the setup.
+// Detection as documented by Microsoft: HKLM\SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\x64
+// holds a REG_DWORD "Major" once a runtime is present.
+// ref: https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist
 function VCRedistNeedsInstall: Boolean;
+var
+  MajorVersion: DWord;
 begin
-  Result := not IsMsiProductInstalled('{36F68A90-239C-34DF-B58C-64B30153CE35}', PackVersionComponents(14, 30, 30704, 0));
+  Result := not (RegQueryDWordValue(HKLM64,
+    'SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\x64', 'Major', MajorVersion)
+    and (MajorVersion >= 14));
 end;
 
 
 // event fired when the uninstall step is changed: https://stackoverflow.com/revisions/12645836/1
 procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
+var
+  DeleteUserData: Boolean;
 begin
-  // if we reached the post uninstall step (uninstall succeeded), then...
-  if CurUninstallStep = usPostUninstall then
+  if CurUninstallStep <> usPostUninstall then
+    Exit;
+
+  // Settings, downloaded wallpapers, screenshots and the depth models are user data, so the
+  // user is asked and the default keeps them; the folder left by the old brand name goes with
+  // the current one.
+  DeleteUserData := SuppressibleMsgBox(
+      ExpandConstant('{cm:DeleteEverythigMsgBox}') + #13#10 + #13#10 +
+      ExpandConstant('{localappdata}\Luma Wallpaper') + #13#10 +
+      ExpandConstant('{localappdata}\Lively Wallpaper'),
+      mbConfirmation, MB_YESNO, IDNO) = IDYES;
+  if DeleteUserData then
   begin
-    // query user to confirm deletion; if user chose "Yes", then...
-    if SuppressibleMsgBox(ExpandConstant('{cm:DeleteEverythigMsgBox}')+ ' ' + ExpandConstant('{localappdata}\Luma Wallpaper') +
-      ' and ' + ExpandConstant('{localappdata}\Lively Wallpaper') + ' ?',
-      mbConfirmation, MB_YESNO, IDNO) = IDYES
-    then
-      // deletion confirmed by user.
-      begin
-        // Delete the directory "C:\Users\<UserName>\AppData\Local\Luma Wallpaper" and everything inside it
-        DelTree(ExpandConstant('{localappdata}\Luma Wallpaper'), True, True, True);
-        // Legacy "Lively Wallpaper" folder from the old brand name; only removed at uninstall time.
-        DelTree(ExpandConstant('{localappdata}\Lively Wallpaper'), True, True, True);
-      end;
+    DelTree(ExpandConstant('{localappdata}\Luma Wallpaper'), True, True, True);
+    DelTree(ExpandConstant('{localappdata}\Lively Wallpaper'), True, True, True);
   end;
+
+  // Browser cache and theme copies are rebuilt by the next install and hold nothing a user
+  // would want back, so they are cleared without asking.
+  DelTree(ExpandConstant('{%TEMP}\Luma Wallpaper'), True, True, True);
+  DelTree(ExpandConstant('{%TEMP}\Lively Wallpaper'), True, True, True);
 end;
 
 //Uninstall previous install: https://stackoverflow.com/questions/2000296/inno-setup-how-to-automatically-uninstall-previous-installed-version
@@ -266,14 +270,34 @@ function InitializeUninstall(): Boolean;
 var
   ErrorCode: Integer;
 begin
-  if CheckForMutexes('LIVELY:DESKTOPWALLPAPERSYSTEM') and
-     (SuppressibleMsgBox('Application is running, do you want to close it?',
-             mbConfirmation, MB_OKCANCEL, IDOK) = IDOK) then
+  Result := True;
+  if not CheckForMutexes('LIVELY:DESKTOPWALLPAPERSYSTEM') then
+    Exit;
+
+  if SuppressibleMsgBox(ExpandConstant('{cm:CloseAppMsgBox}'),
+      mbConfirmation, MB_OKCANCEL, IDOK) <> IDOK then
   begin
-    ShellExec('open','taskkill.exe','/f /im {#MyAppExeName}','',SW_HIDE,ewWaitUntilTerminated,ErrorCode);
+    // This used to return True anyway and start an uninstall that could not remove a single
+    // file: the executables were still running, so Inno skipped them and left the folder.
+    Result := False;
+    Exit;
   end;
 
-  Result := True;
+  // A second instance forwards the switch over the named pipe instead of starting a new app,
+  // and the core then closes every wallpaper and restores the desktop picture. Forcing the
+  // processes down instead leaves the last wallpaper window painted on the desktop until the
+  // user reboots.
+  ShellExec('open', ExpandConstant('{app}\{#MyAppExeName}'), '--shutdown', '',
+    SW_HIDE, ewWaitUntilTerminated, ErrorCode);
+
+  // The UI and one player per screen are separate processes in the same folder, and they all
+  // hold files locked; taskkill also waits for the tree to go down before Inno starts.
+  ShellExec('open', 'taskkill.exe', '/f /t /im {#MyAppExeName}', '',
+    SW_HIDE, ewWaitUntilTerminated, ErrorCode);
+  ShellExec('open', 'taskkill.exe', '/f /t /im Lively.UI.WinUI.exe', '',
+    SW_HIDE, ewWaitUntilTerminated, ErrorCode);
+  ShellExec('open', 'taskkill.exe', '/f /t /im Lively.Player.WebView2.exe', '',
+    SW_HIDE, ewWaitUntilTerminated, ErrorCode);
 end;
 //////////////////////////////////////////////////////////////////////
 function CmdLineParamNotExists(const Value: string): Boolean;

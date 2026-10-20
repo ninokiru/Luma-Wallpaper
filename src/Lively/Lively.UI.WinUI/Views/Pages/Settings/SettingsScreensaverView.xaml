@@ -74,27 +74,6 @@
                     </controls:SettingsCard>
                 </StackPanel>
 
-                <StackPanel>
-                    <TextBlock
-                        x:Uid="System"
-                        Margin="0,0,0,10"
-                        FontWeight="SemiBold" />
-                    <controls:SettingsCard
-                        x:Uid="ScreensaverWindowsSettings"
-                        Command="{Binding OpenWindowsSettingsCommand}"
-                        IsClickEnabled="True">
-                        <controls:SettingsCard.HeaderIcon>
-                            <FontIcon Glyph="&#xE770;" />
-                        </controls:SettingsCard.HeaderIcon>
-                    </controls:SettingsCard>
-                    <!--  Windows only launches a .scr file, so the picker above has to be pointed at Luma once.  -->
-                    <InfoBar
-                        x:Uid="ScreensaverWindowsHint"
-                        IsClosable="False"
-                        IsOpen="True"
-                        Severity="Informational" />
-                </StackPanel>
-
             </StackPanel>
         </ScrollViewer>
     </Grid>

@@ -1259,9 +1259,6 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
   <data name="VideoLetWindowsManageColor.Header" xml:space="preserve">
     <value>Để Windows quản lý màu sắc</value>
   </data>
-  <data name="ScreensaverWindowsSettings.Header" xml:space="preserve">
-    <value>Cài đặt Windows</value>
-  </data>
   <data name="DescriptionConfirmProjectDirectory.Text" xml:space="preserve">
     <value>Xác nhận cấu trúc dự án</value>
   </data>
@@ -1412,11 +1409,5 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
   </data>
   <data name="ScreensaverWaitTime.Description" xml:space="preserve">
     <value>Số phút không thao tác máy thì dùng hình nền hiện tại làm màn hình chờ.</value>
-  </data>
-  <data name="ScreensaverWindowsHint.Title" xml:space="preserve">
-    <value>Cài đặt của Windows</value>
-  </data>
-  <data name="ScreensaverWindowsHint.Message" xml:space="preserve">
-    <value>Windows chỉ chạy tệp .scr: mở bảng ở trên rồi chọn Luma trong danh sách màn hình chờ.</value>
   </data>
 </root>

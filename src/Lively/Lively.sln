@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively", "Lively\Lively.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.Common", "Lively.Common\Lively.Common.csproj", "{FCC8AE2F-3B96-4BC3-ADCA-7A785F4821C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lively.Utility.Watchdog", "Lively.Utility.Watchdog\Lively.Utility.Watchdog.csproj", "{BF10DB31-D594-4619-B058-E7DA3D2898D9}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.Models", "Lively.Models\Lively.Models.csproj", "{1E3D9D5B-A1FD-4915-95F5-9A52D87FCDEC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.Grpc.Common", "Lively.Grpc.Common\Lively.Grpc.Common.csproj", "{F3E38E78-1670-4E6F-A9FB-041AC30E61E8}"
@@ -75,22 +73,6 @@ Global
 		{FCC8AE2F-3B96-4BC3-ADCA-7A785F4821C6}.Release|x64.Build.0 = Release|Any CPU
 		{FCC8AE2F-3B96-4BC3-ADCA-7A785F4821C6}.Release|x86.ActiveCfg = Release|Any CPU
 		{FCC8AE2F-3B96-4BC3-ADCA-7A785F4821C6}.Release|x86.Build.0 = Release|Any CPU
-		{BF10DB31-D594-4619-B058-E7DA3D2898D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BF10DB31-D594-4619-B058-E7DA3D2898D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BF10DB31-D594-4619-B058-E7DA3D2898D9}.Debug|arm64.ActiveCfg = Debug|Any CPU
-		{BF10DB31-D594-4619-B058-E7DA3D2898D9}.Debug|arm64.Build.0 = Debug|Any CPU
-		{BF10DB31-D594-4619-B058-E7DA3D2898D9}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{BF10DB31-D594-4619-B058-E7DA3D2898D9}.Debug|x64.Build.0 = Debug|Any CPU
-		{BF10DB31-D594-4619-B058-E7DA3D2898D9}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{BF10DB31-D594-4619-B058-E7DA3D2898D9}.Debug|x86.Build.0 = Debug|Any CPU
-		{BF10DB31-D594-4619-B058-E7DA3D2898D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BF10DB31-D594-4619-B058-E7DA3D2898D9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BF10DB31-D594-4619-B058-E7DA3D2898D9}.Release|arm64.ActiveCfg = Release|Any CPU
-		{BF10DB31-D594-4619-B058-E7DA3D2898D9}.Release|arm64.Build.0 = Release|Any CPU
-		{BF10DB31-D594-4619-B058-E7DA3D2898D9}.Release|x64.ActiveCfg = Release|x64
-		{BF10DB31-D594-4619-B058-E7DA3D2898D9}.Release|x64.Build.0 = Release|x64
-		{BF10DB31-D594-4619-B058-E7DA3D2898D9}.Release|x86.ActiveCfg = Release|Any CPU
-		{BF10DB31-D594-4619-B058-E7DA3D2898D9}.Release|x86.Build.0 = Release|Any CPU
 		{1E3D9D5B-A1FD-4915-95F5-9A52D87FCDEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1E3D9D5B-A1FD-4915-95F5-9A52D87FCDEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E3D9D5B-A1FD-4915-95F5-9A52D87FCDEC}.Debug|arm64.ActiveCfg = Debug|Any CPU
